@@ -6,7 +6,8 @@ public class Ex07 {
 
 	public static void main(String[] args) {
 
-		caculateTheLengthOfSubstringOne("aaabbaaabbaaaaa");
+		String inputString = input();
+		caculateTheLengthOfSubstring(inputString);
 	}
 
 	private static String input() {
@@ -22,12 +23,16 @@ public class Ex07 {
 		return inputString;
 	}
 
-	private static void caculateTheLengthOfSubstringOne(String inputString) {
+	private static void caculateTheLengthOfSubstring(String inputString) {
 		int count = 0;
 		int maxLength = 0;
 		int minLength = 0;
-		int lastIndexOfMax = 0;
-		int lastIndexOfMin = 0;
+		int indexOfMax = 0;
+		int indexOfMin = 0;
+		int sumOfLength = 0;
+		int lengthOfSubstring = 0;
+		int endMin = 0;
+		int endMax = 0;
 
 		StringBuffer stringBuffer = new StringBuffer();
 		char previousCharacter = inputString.charAt(0);
@@ -44,24 +49,29 @@ public class Ex07 {
 		String[] strings = stringBuffer.toString().split("-");
 
 		maxLength = minLength = strings[0].length();
-		int length = 0;
+
 		for (String subString : strings) {
-			length = subString.length();
-			if (length >= maxLength) {
-				maxLength = length;
-				lastIndexOfMax = count;
+			lengthOfSubstring = subString.length();
+			sumOfLength += lengthOfSubstring;
+
+			if (lengthOfSubstring > maxLength) {
+				maxLength = lengthOfSubstring;
+				indexOfMax = count;
+				endMax = sumOfLength;
 			}
-			if (length <= minLength) {
-				minLength = length;
-				lastIndexOfMin = count;
+
+			if (lengthOfSubstring < minLength) {
+				minLength = lengthOfSubstring;
+				indexOfMin = count;
+				endMin = sumOfLength;
 			}
 			count++;
 		}
-		System.out.println(stringBuffer);
+		System.out.println("Độ dài bé nhất của dãy con đúng: " + minLength + " " + strings[indexOfMin] + " ["
+				+ (endMin - minLength) + "]");
 
-		System.out.println("Độ dài bé nhất của dãy con đúng: " + minLength + " " + strings[lastIndexOfMin]);
-
-		System.out.println("Độ dài lớn nhất của dãy con đúng: " + maxLength + " " + strings[lastIndexOfMax]);
+		System.out.println("Độ dài lớn nhất của dãy con đúng: " + maxLength + " " + strings[indexOfMax] + " ["
+				+ (endMax - maxLength) + "]");
 	}
 
 	private static boolean isValidInputString(String inputString) {
