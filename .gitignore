@@ -19,6 +19,9 @@
 *.tar.gz
 *.rar
 
+#ignore folder settings
+.settings/
+
 # eclipse package
 .settings/
 target/
