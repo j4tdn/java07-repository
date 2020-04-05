@@ -2,7 +2,7 @@ package test02;
 
 public class Ex02 {
 	public static void main(String[] args) {
-		String[] strArr = { "aa6b546c6e22h", "aa6b326c6e22h" };
+		String[] strArr = { "dsaddasd", "aa6b326c6e22h" };
 		showArr(getMaxNumberOfArr(strArr));
 	}
 
@@ -19,16 +19,16 @@ public class Ex02 {
 			}
 			strNumber += charArr[i];
 		}
-
-		String numbers[] = strNumber.trim().split("[\\s]+");
-		if (numbers.length == 0) {
+		if (strNumber.matches("[\\s]+")) {
 			return 0;
+		} else {
+			String numbers[] = strNumber.trim().split("[\\s]+");
+			int max = Integer.parseInt(numbers[0]);
+			for (String number : numbers) {
+				max = Integer.parseInt(number) > max ? Integer.parseInt(number) : max;
+			}
+			return max;
 		}
-		int max = Integer.parseInt(numbers[0]);
-		for (String number : numbers) {
-			max = Integer.parseInt(number) > max ? Integer.parseInt(number) : max;
-		}
-		return max;
 	}
 
 	private static int[] getMaxNumberOfArr(String[] arr) {
