@@ -1,4 +1,4 @@
-package java07.Lesson09_Submit;
+package java07.TEST09_PhanThanhTrung;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
