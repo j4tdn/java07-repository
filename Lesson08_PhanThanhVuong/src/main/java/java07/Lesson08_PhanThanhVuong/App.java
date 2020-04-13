@@ -1,4 +1,4 @@
-package java07.Lession08_PhanThanhVuong;
+package java07.Lesson08_PhanThanhVuong;
 
 /**
  * Hello world!

@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>java07</groupId>
-  <artifactId>Lession08_PhanThanhVuong</artifactId>
+  <artifactId>Lesson08_PhanThanhVuong</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Lession08_PhanThanhVuong</name>
+  <name>Lesson08_PhanThanhVuong</name>
   <url>http://maven.apache.org</url>
 
   <properties>

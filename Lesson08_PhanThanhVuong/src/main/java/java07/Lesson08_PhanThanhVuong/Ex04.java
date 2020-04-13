@@ -1,4 +1,4 @@
-package views;
+package java07.Lesson08_PhanThanhVuong;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ public class Ex04 {
 		System.out.print("Nhập số thứ hai: ");
 		String numberTwo = inputNumber();
 		System.out.println();
-		System.out.println(analysis_Prime(numberOne).equals(analysis_Prime(numberTwo)) ? "YES" : "NO");
+		System.out.println(analysisPrime(numberOne).equals(analysisPrime(numberTwo)) ? "YES" : "NO");
 
 	}
 
@@ -31,7 +31,7 @@ public class Ex04 {
 
 	}
 
-	public static String analysis_Prime(String str) {
+	public static String analysisPrime(String str) {
 		String result = null;
 		long number = Long.parseLong(str);
 		for (int i = 2; i <= number; i++) {

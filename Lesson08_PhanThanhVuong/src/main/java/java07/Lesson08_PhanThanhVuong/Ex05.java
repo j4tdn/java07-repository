@@ -1,25 +1,25 @@
-package views;
+package java07.Lesson08_PhanThanhVuong;
 
 import java.util.Scanner;
 
 public class Ex05 {
 	static void printLCSubStr(String X, String Y) {
-		int[][] lenght_string = new int[X.length() + 1][Y.length() + 1];// tạo mảng lưu độ dài chung nhất
+		int[][] length_string = new int[X.length() + 1][Y.length() + 1];// tạo mảng lưu độ dài chung nhất
 		int len = 0;
 		int row = 0, col = 0;
 		for (int i = 0; i <= X.length(); i++) {
 			for (int j = 0; j <= Y.length(); j++) {
 				if (i == 0 || j == 0)
-					lenght_string[i][j] = 0;
+					length_string[i][j] = 0;
 				else if (X.charAt(i - 1) == Y.charAt(j - 1)) {
-					lenght_string[i][j] = lenght_string[i - 1][j - 1] + 1;
-					if (len < lenght_string[i][j]) {
-						len = lenght_string[i][j];
+					length_string[i][j] = length_string[i - 1][j - 1] + 1;
+					if (len < length_string[i][j]) {
+						len = length_string[i][j];
 						row = i;
 						col = j;
 					}
 				} else
-					lenght_string[i][j] = 0;
+					length_string[i][j] = 0;
 			}
 		}
 		if (len == 0) {
@@ -27,7 +27,7 @@ public class Ex05 {
 			return;
 		}
 		String resultStr = "";
-		while (lenght_string[row][col] != 0) {
+		while (length_string[row][col] != 0) {
 			resultStr = X.charAt(row - 1) + resultStr;
 			--len;
 			row--;

@@ -1,4 +1,4 @@
-package views;
+package java07.Lesson08_PhanThanhVuong;
 
 import java.text.Normalizer;
 import java.util.Scanner;
@@ -25,14 +25,12 @@ public class Ex02 {
 
 	}
 
-	// Hàm chuyển nhiều ký tự space thành một
 	public static String one_Space(String str) {
 		str = str.trim();
 		str = str.replaceAll("\\s+", " ");
 		return str;
 	}
 
-	// Hàm chuyển chữ cái đầu thành hoa
 	public static String toUpper(String string) {
 		char[] chars = string.toLowerCase().toCharArray();
 		boolean found = false;
@@ -48,7 +46,6 @@ public class Ex02 {
 		return String.valueOf(chars);
 	}
 
-	// kiểm tra tên chỉ chứa kí tự chữ
 	private static boolean isValidName(String name) {
 		if (!name.matches("^[a-z A-Z]+")) {
 			throw new RuntimeException("Họ tên không được chứa kí tự số, kí tự đặc biệt!");
@@ -56,7 +53,6 @@ public class Ex02 {
 		return true;
 	}
 
-	// Chuyển có dấu sang không dấu
 	public static String removeAccent(String s) {
 
 		String tmp = Normalizer.normalize(s, Normalizer.Form.NFD);

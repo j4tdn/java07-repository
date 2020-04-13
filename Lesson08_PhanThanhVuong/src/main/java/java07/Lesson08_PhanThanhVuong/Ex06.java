@@ -1,4 +1,4 @@
-package views;
+package java07.Lesson08_PhanThanhVuong;
 
 import java.util.Scanner;
 
@@ -7,10 +7,10 @@ public class Ex06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Nhập giá trị cần tìm:");
 		int index = sc.nextInt();
-		System.out.println(getnumber(index));
+		System.out.println(getNumber(index));
 	}
 
-	private static char getnumber(int index) {
+	private static char getNumber(int index) {
 		int count = 1;
 		String numberString = "";
 		while (count <= index) {
