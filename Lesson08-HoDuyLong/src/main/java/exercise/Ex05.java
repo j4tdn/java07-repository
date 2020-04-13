@@ -2,8 +2,8 @@ package exercise;
 
 public class Ex05 {
 	public static void main(String[] args) {
-		String string1 = "ABCDEF";
-		String string2 = "ABCDEM";
+		String string1 = "ABCMTPOABCDEF";
+		String string2 = "ABCTXABCDEF";
 
 		getTheLongestCommonSubstring(string1, string2);
 	}
@@ -13,6 +13,7 @@ public class Ex05 {
 		int len2 = str2.length();
 
 		int max = 0;
+		int temp = 0;
 
 		String result = "";
 
@@ -28,13 +29,14 @@ public class Ex05 {
 					}
 					if (max < array[i][j]) {
 						max = array[i][j];
+						temp = i;
 					}
 				}
 			}
 		}
 
 		char[] charSequence = str1.toCharArray();
-		for (int k = 0; k < max; k++) {
+		for (int k = temp - max + 1; k <= temp; k++) {
 			result += charSequence[k];
 		}
 		System.out.println(result);

@@ -5,14 +5,16 @@ import java.util.List;
 
 public class Ex07 {
 	public static void main(String[] args) {
-		String inputString = "aaaaabbbab";
+		String inputString = "aaabaaabbaaaaa";
 
-		rightSubstring(inputString);
+		maxAndMinOfRightSubStr(inputString);
 	}
 
-	private static void rightSubstring(String s) {
+	private static void maxAndMinOfRightSubStr(String s) {
 		List<String> list = new ArrayList<String>();
 		int j = 0;
+		String maxRightSubStr = "";
+		String minRightSubStr = "";
 
 		for (int i = 0; i < s.length() - 1; i++) {
 			if (s.charAt(i) != s.charAt(i + 1)) {
@@ -25,11 +27,13 @@ public class Ex07 {
 		for (String str : list) {
 			if (max < str.length()) {
 				max = str.length();
+				maxRightSubStr = str;
 			}
 			if (min > str.length()) {
 				min = str.length();
+				minRightSubStr = str;
 			}
 		}
-		System.out.println("max: " + max + " and min: " + min);
+		System.out.println("max: " + max + " " + maxRightSubStr + " and min: " + min + " " + minRightSubStr);
 	}
 }
