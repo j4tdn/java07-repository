@@ -4,7 +4,7 @@ public class Ex01 {
 
 	public static void main(String[] args) {
 		String string = "hoài, hùng, oanh, liệt";
-		char kytu = 0;
+		char characters = 0;
 		System.out.println("characters per line: ");
 		for (int i = 0; i < string.length(); i++) {
 			kytu = string.charAt(i);

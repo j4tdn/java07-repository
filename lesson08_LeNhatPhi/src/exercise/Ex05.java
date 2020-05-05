@@ -2,29 +2,29 @@ package exercise;
 
 public class Ex05 {
 	public static void main(String[] args) {
-		String string1 = "ABCDE123DEFGH";
-		String string2 = "ABCDE123ENGH";
+		String string1 = "01a2b3456cde478";
+		String string2 = "ABC3456ENGH";
 		String count = "";
-		int s1 = 0;
-		int s2 = 0;
+		int variableOne = 0;
+		int variableTwo = 0;
 
 		for (int i = 0; i < 20; i++) {
-			if (s2 <= string1.length()) {
-				String string3 = string1.substring(s1, s2);
+			if (variableTwo <= string1.length()) {
+				String string3 = string1.substring(variableOne, variableTwo);
 				int a = string2.indexOf(string3);
 				if (a == -1) {
-					if (s2 >= s1 + 2) {
-						s1++;
+					if (variableTwo >= variableOne + 2) {
+						variableOne++;
 					} else {
-						s1++;
-						s2++;
+						variableOne++;
+						variableTwo++;
 					}
 				} else {
-					if (s2 >= s1 + 2 && string3.length() >= count.length()) {
+					if (variableTwo >= variableOne + 2 && string3.length() >= count.length()) {
 						count = string3;
-						s2++;
+						variableTwo++;
 					} else {
-						s2++;
+						variableTwo++;
 
 					}
 				}

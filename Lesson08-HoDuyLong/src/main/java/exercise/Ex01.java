@@ -23,17 +23,17 @@ public class Ex01 {
 	}
 
 	private static void printWord(String s) {
-		String[] array = s.split("[\\s]+");
-		for (String string : array) {
+		String[] stringArray = s.split("[\\s]+");
+		for (String string : stringArray) {
 			System.out.println(string);
 		}
 	}
 
 	private static void reverseCharacter(String s) {
-		String[] array = s.split("[\\s]+");
+		String[] stringArray = s.split("[\\s]+");
 		StringBuilder sb = new StringBuilder();
-		for (int i = array.length - 1; i >= 0; i--) {
-			sb.append(array[i] + " ");
+		for (int i = stringArray.length - 1; i >= 0; i--) {
+			sb.append(stringArray[i] + " ");
 		}
 		String result = sb.toString().trim();
 		System.out.println(result);

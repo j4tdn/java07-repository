@@ -2,14 +2,16 @@ package exercise;
 
 public class Ex06 {
 	public static void main(String[] args) {
-		String numberString = "1234894512314599663214554787777845412354798422122";
-
-		getNumber(numberString, 30);
+		getNumber(10);
 	}
 
-	private static void getNumber(String s, int k) {
-		int result = 0;
-		result = Character.getNumericValue(s.charAt(k - 1));
-		System.out.println(result);
+	private static void getNumber(int k) {
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 1 ; i <= k ; i++) {
+			sb.append(i);
+		}
+		System.out.println("The number: " + sb.toString());
+		System.out.println("The number at position " + k + ":" + sb.charAt(k - 1));
 	}
 }
