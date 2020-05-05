@@ -4,12 +4,12 @@ import java.util.HashSet;
 
 public class Ex04 {
 	public static void main(String[] args) {
-		int num1 = 3;
-		int num2 = 6;
+		long num1 = 15;
+		long num2 = 75;
 		checkEquivalentPrime(num1, num2);
 	}
 
-	private static void checkEquivalentPrime(int a, int b) {
+	private static void checkEquivalentPrime(long a, long b) {
 		if (analyInt(a).equals(analyInt(b))) {
 			System.out.println("YES");
 		} else {
@@ -17,7 +17,7 @@ public class Ex04 {
 		}
 	}
 
-	private static HashSet<Integer> analyInt(int n) {
+	private static HashSet<Integer> analyInt(long n) {
 		int i = 2;
 		HashSet<Integer> set = new HashSet<Integer>();
 
@@ -30,7 +30,7 @@ public class Ex04 {
 			}
 		}
 		if (set.isEmpty()) {
-			set.add(n);
+			set.add((int) n);
 		}
 		return set;
 	}
