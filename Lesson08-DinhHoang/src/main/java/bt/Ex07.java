@@ -2,7 +2,7 @@ package bt;
 
 public class Ex07 {
 	public static void main(String[] args) {
-		String s = "a";
+		String s = "aabbccc";
 
 		int maxOne = 1, maxTwo = 1, count = 1, tempOne = 0, tempTwo = 0, min = 127;
 
