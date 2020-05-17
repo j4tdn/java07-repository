@@ -1,0 +1,21 @@
+package collections.list;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Ex01 {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void main(String[] args) {
+		
+		List digits=new ArrayList();
+		
+		digits.add(10);
+		digits.add(20);
+		digits.add(30);
+		
+		for (int i=0;i<digits.size();i++) {
+			Object object=digits.get(i);
+			System.out.println(Integer.parseInt(object.toString()));
+		}
+	}
+}
