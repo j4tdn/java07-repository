@@ -7,6 +7,8 @@ public class Ex02 {
 		int[] numbers = {1, 2, 5, 8, 9, 10, 5, 8, 9, 12, 7, 7, 6};
 		float a = average(Arrays.copyOfRange(numbers, 0, 4));
 		float b = average(Arrays.copyOfRange(numbers, numbers.length - 5, numbers.length - 1));
+		System.out.println("a: Value averge of 5 value first");
+		System.out.println("b: Value averge of 5 value last");
 		if (a > b) {
 			System.out.println("a > b");
 		} else if (a < b) {

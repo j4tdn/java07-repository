@@ -10,14 +10,14 @@ public class InsertionSort {
 	}
 	
 	private static void sort(int[] numbers) {
-		for (int out = 0; out < numbers.length - 1; out++) {
-			for (int in = out + 1; in < numbers.length; in++) {
-				if (numbers[out] > numbers[in]) {
-					int temp = numbers[out];
-					numbers[out] = numbers[in];
-					numbers[in] = temp;
-				}
+		for (int out = 1; out < numbers.length - 1; out++) {
+			int key = numbers[out];
+			int in = out - 1;
+			while (in >= 0 && numbers[in] > key) {
+				numbers[in + 1] = numbers[in];
+				in = in - 1;
 			}
-		}
+			numbers[in + 1] = key;
+		} 
 	}
 }
