@@ -61,11 +61,7 @@ public class BaiTAp {
 		}
 		
 	}
-	
-	
-	
-	
-	
+
 	private static boolean containt(int[] numbers, int rand) {
 		for (int number : numbers) {
 			if (rand == number) {
