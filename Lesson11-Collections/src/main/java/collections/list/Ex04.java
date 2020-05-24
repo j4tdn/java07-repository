@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 public class Ex04 {
 	public static void main(String[] args) {
@@ -13,6 +14,19 @@ public class Ex04 {
 		Collections.reverse(digits);
 		
 		digits.forEach(num -> System.out.print(num + "   "));
+		
+		//remove by index
+		//digits.remove(0);
+		
+		//remove by element
+		//digits.remove(new Integer(2));
+		
+		//remove the odd numbers
+		digits.removeIf((digit) -> digit % 2 == 0);
+		digits.set(0, 99);
+		
+		System.out.println("\n==========================");
+		digits.forEach(num -> System.out.print(num + "   "));
 	}
 	
 	private static List<Integer> random(int size){
@@ -20,7 +34,7 @@ public class Ex04 {
 		List<Integer> digits = new ArrayList<>();
 		int i = 0;
 		while( i < size) {
-			int number = rd.nextInt(10) + 1;
+			int number = rd.nextInt(5) + 1;
 			if(!digits.contains(number)) {
 				digits.add(number);
 				i++;
