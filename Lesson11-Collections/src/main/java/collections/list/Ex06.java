@@ -5,7 +5,11 @@ import java.util.List;
 
 public class Ex06 {
 	public static void main(String[] args) {
-		List<String> students=new LinkedList<>();
+		List<String> students = new LinkedList<>();
 		students.add("a");
+		for (String s : students) {
+			System.out.println(s);
+		}
+
 	}
 }

@@ -24,7 +24,7 @@ public class EmployeeView {
 
 		System.out.println("\n============");
 		Employee emp2 = new Employee(13, "Hoang Teo", 20, Title.President);//chua add vao list
-		//emps.remove(emp2);//su dung equal cuar object sau khi override
+		//emps.remove(emp2);//su dung equal cua object sau khi override
 		emps.forEach(emp -> System.out.println(emp + " "));
 		System.out.println("Emp contain :"+emps.contains(emp2));
 

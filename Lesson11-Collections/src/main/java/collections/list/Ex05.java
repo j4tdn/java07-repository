@@ -32,7 +32,7 @@ public class Ex05 {
 		junctionList.forEach(string -> System.out.print(string + " "));
 		System.out.println("\n=======================");
 		
-		// hiei
+		// hieu
 		List<String> removeList = new ArrayList<>(first);
 		removeList.removeAll(second);
 		removeList.forEach(string -> System.out.print(string + " "));
