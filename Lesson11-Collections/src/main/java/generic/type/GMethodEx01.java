@@ -23,5 +23,11 @@ public class GMethodEx01 {
 			System.out.print(element + " ");
 		}
 	}
+	//tu Java 1.5
+	private static void printWildCard(List<?> elements) {
+		for (Object element : elements) {
+			System.out.print(element + " ");
+		}
+	}
 
 }
