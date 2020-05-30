@@ -2,6 +2,7 @@ package generic.type28;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 public class FakeList<E> {
 	private E[] es;
@@ -34,7 +35,29 @@ public class FakeList<E> {
 	
 	// kiểm tra tại lớp 
 	//forEACH
+
+	public void forEach1(Consumer<E> consumer) {
+		for(E e : es) {
+			consumer.accept(e);
+		}
+	}
+	
 	// add(int index,E e)
+	public void insert(int index, E e) {
+		E[] newEs = (E[])Array.newInstance(Object.class,es.length + 1);
+		for (int i = 0; i < newEs.length; i++) {
+			if (i < index) {
+				newEs[i] = es[i];
+			} else if (i == index) {
+				E value = null;
+				newEs[index] = value;
+			} else {
+				newEs[i] = es[i-1];
+			}
+		}
+	}
 	//remove(int i)
+	
+	
 	//remove(E e)
 }
