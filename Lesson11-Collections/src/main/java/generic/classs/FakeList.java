@@ -38,20 +38,24 @@ public class FakeList<E> {
 	}
 
 	// forEach();
+	@SuppressWarnings("unused")
 	public void forEach(Consumer<E> action) {
-		if (action == null) {
-			throw new NullPointerException();
-		}
-		int size = this.size();
-		for (int i = 0; i < size; i++) {
-			action.accept(elementAt(es, i));
+//		if (action == null) {
+//			throw new NullPointerException();
+//		}
+//		int size = this.size();
+//		for (int i = 0; i < size; i++) {
+//			action.accept(elementAt(es, i));
+//		}
+		for (E e : es) {
+			action.accept(e);
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	static <E> E elementAt(Object[] es, int index) {
-		return (E) es[index];
-	}
+//	@SuppressWarnings("unchecked")
+//	static <E> E elementAt(Object[] es, int index) {
+//		return (E) es[index];
+//	}
 	
 	// add(int index, E e);
 	@SuppressWarnings("unchecked")
