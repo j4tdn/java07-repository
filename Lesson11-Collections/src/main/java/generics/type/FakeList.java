@@ -2,6 +2,7 @@ package generics.type;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 public class FakeList<E> {
 	private E[] es;
@@ -32,6 +33,30 @@ public class FakeList<E> {
 		newes[es.length] = e;
 		es = newes;// chi tro den o nho newes.ko copy duoc
 		return true;
+	}
+
+	public boolean add(E e,int index) {
+		@SuppressWarnings("unchecked")
+		E[] newes = (E[]) Array.newInstance(Object.class, es.length + 1);
+		for(int i=0;i<newes.length;i++) {
+			if(i<index) {
+				newes[i] =es[i];
+			}
+			else if (i==index) {
+				newes[i]=e;
+			}
+			else newes[i]=es[i-1]; 
+				
+		}
+		return true;
+
+	}
+
+	public void forEach(Consumer<E> consumer) {
+		for (E e : es) {
+			consumer.accept(e);
+
+		}
 	}
 
 }
