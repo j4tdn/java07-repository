@@ -11,7 +11,7 @@ public class GMethodEx01 {
 		List<Object> objects = Arrays.asList(1d, "b", 3d, "d", 5d);
 
 		print(integers);
-
+		printS(strings);
 		print(doubles);
 	}
 
@@ -19,6 +19,20 @@ public class GMethodEx01 {
 	private static <E extends Number> void print(List<E> elements) {
 		for (E element : elements) {
 			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	private static <E extends CharSequence> void printS(List<E> elements) {
+		for (E element : elements) {
+			System.out.print(element + " ");
+		}
+		System.out.println();
+	}
+
+	private static void printWillCard(List<?> elements) {
+		for (Object element : elements) {
+			System.out.println(element + " ");
 		}
 		System.out.println();
 	}
