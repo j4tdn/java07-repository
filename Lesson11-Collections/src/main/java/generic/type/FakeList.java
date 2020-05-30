@@ -39,8 +39,11 @@ public class FakeList<E> {
 	}
 
 	public void forEach(Consumer<E> action) {
-		for(int i =0;i<es.length;i++) {
-			action.accept(es[i]);
+//		for(int i =0;i<es.length;i++) {
+//			action.accept(es[i]);
+//		}
+		for(E e:es) {
+			action.accept(e);
 		}
 	}
 	public boolean add(E e, int index) {
