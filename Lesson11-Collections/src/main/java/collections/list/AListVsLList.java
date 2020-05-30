@@ -8,7 +8,7 @@ public class AListVsLList {
     private static int COUNT = 50000;
 
     public static void main(String[] args) {
-        List<String> alist = new ArrayList<>();
+        List<String> alist = new ArrayList<String>();
         List<String> llist = new LinkedList<>();
 
         // Add
