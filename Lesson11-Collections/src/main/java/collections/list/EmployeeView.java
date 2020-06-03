@@ -16,14 +16,15 @@ public class EmployeeView {
 		System.out.println("=============================");
 
 		Employee empById = getEmp(employees, 1);
-
 		System.out.println(empById);
 		System.out.println("=============================");
+
 		employees.removeIf(emp -> emp.getAge() >= 60);
 		employees.forEach(employee -> System.out.println(employee));
 		System.out.println("=============================");
 
 		Employee emp2 = new Employee(13, "Hoang Teo", 20, Title.President);
+		System.out.println("contains: " + employees.contains(emp2));
 		employees.remove(emp2);
 		employees.forEach(employee -> System.out.println(employee));
 		System.out.println("=============================");
