@@ -1,6 +1,8 @@
 package collection.map;
 
+import static java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,6 +11,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Ex01 {
 	public static void main(String[] args) {
@@ -35,12 +40,24 @@ public class Ex01 {
 //		budget = sortByKey(budget);
 //		loop(budget);
 
-		budget = sortByKey2(budget);
-		loop(budget);
+		// budget = sortByKey2(budget);
+		// loop(budget);
 
 //		budget = sortByValue(budget);
 		// loop(budget);
+		Map<String, Integer> sortedMap = budget.entrySet().stream()
+				.sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
+		Entry<String, Integer> first = new SimpleEntry<>("Lunch", 20);
+		Entry<String, Integer> second = new SimpleEntry<>("Coffee", 30);
+		Entry<String, Integer> third = new SimpleEntry<>("Lunch", 40);
+
+		BinaryOperator<Entry<String, Integer>> mergeFuntion = (e1, e2) -> e2;
+
+		Map<String, Integer> foodMap = Arrays.asList(first, second, third).stream()
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue,(e1, e2) -> e2));
+		loop(foodMap);
 	}
 
 	private static Map<String, Integer> sortByKey(Map<String, Integer> budget) {
@@ -60,7 +77,7 @@ public class Ex01 {
 		Map<String, Integer> sortedMap = new LinkedHashMap<>();
 
 		List<Entry<String, Integer>> sortedList = new ArrayList<>(budget.entrySet());
-	//	sortedList.sort(Entry.comparingByValue());
+		// sortedList.sort(Entry.comparingByValue());
 		sortedList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
 
 		for (Entry<String, Integer> entry : sortedList) {
