@@ -1,9 +1,11 @@
 package collections.map;
 
-import java.sql.Array;
+import java.util.AbstractMap.SimpleEntry;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -12,6 +14,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Ex01 {
 	public static void main(String[] args) {
@@ -32,10 +36,29 @@ public class Ex01 {
 
 		// budget.Set();?
 		// budget.remove(key)
-
+		/* cach 1
 		budget = sortByKey(budget);
 		loop(budget);
 		sortByValue(budget);
+		*/
+		/* cach 2:
+		 * <1,3>
+		 * <1,2>
+		 * */
+		
+		Map<String, Integer> sortedMap= budget.entrySet()
+				.stream()
+				.sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,e2)->e2, LinkedHashMap::new));
+	
+		Entry<String, Integer> first= new SimpleEntry("Lunch", 30);
+		Entry<String, Integer> second= new SimpleEntry("Coffee", 30);
+		Entry<String, Integer> third= new SimpleEntry("Lunch", 10);
+		
+		Map<String, Integer> foodMap= Arrays.asList(first,second,third)
+				.stream()
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,e2)->e2));
+	loop(foodMap);
 	}
 
 	private static void loop(Map<String, Integer> budget) {
@@ -67,6 +90,7 @@ public class Ex01 {
 	}
 
 	private static Map<String, Integer> sortByValue(Map<String, Integer> budget) {
+		// map entrySet . linkedlist . sort . sorted List 
 		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
 		List<Entry<String, Integer>> sortedList = new LinkedList<Map.Entry<String, Integer>>(budget.entrySet());
 		//sortedList.sort((e1, e2) -> e1.getValue().compareTo(e2.getValue()));

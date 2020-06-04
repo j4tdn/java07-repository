@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.HashMap;
+
 import javax.swing.border.TitledBorder;
 
 import common.Title;
@@ -69,5 +71,10 @@ public class Employee {
 		}
 		Employee that = (Employee) obj;
 		return getId() == that.getId();
+	}
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
 	}
 }
