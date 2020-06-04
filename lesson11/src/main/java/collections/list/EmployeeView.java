@@ -3,12 +3,11 @@ package collections.list;
 import java.util.ArrayList;
 import java.util.List;
 
-import bin.Employee;
+import beans.Employee;
 import common.Title;
 
 public class EmployeeView {
 	public static void main(String[] args) {
-
 		List<Employee> employees = getEmployee();
 		Employee newEmp = new Employee(1, "trung phan", 22, Title.Dev);
 		System.out.println("=====================");

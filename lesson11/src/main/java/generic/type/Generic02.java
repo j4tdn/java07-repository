@@ -16,7 +16,7 @@ public class Generic02<T> {
 	public static void main(String[] args) {
 		Generic02<String> type = new Generic02<>();
 		type.set("hoang ga");
-		type.set(1);
+		type.set("ngu");
 		Generic02 type1 = new Generic02();
 		type1.set("hoang ga1");
 		type1.set(10);
