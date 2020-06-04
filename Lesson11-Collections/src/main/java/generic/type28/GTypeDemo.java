@@ -20,7 +20,7 @@ public class GTypeDemo {
 		}
 
 		System.out.println("==========================");
-
+		
 		System.out.println("==========================");
 		strings.forEach1(string -> {
 			System.out.println(string + " ");

@@ -15,7 +15,7 @@ public class GMEx01 {
 //		print(integer);
 		print(strings);
 		//bound type: CharSequence
-	
+		
 		
 	}
 	private static <E extends CharSequence > void print(List<E> elements ) {
