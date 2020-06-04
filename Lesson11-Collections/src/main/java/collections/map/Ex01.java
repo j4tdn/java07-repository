@@ -1,6 +1,9 @@
 package collections.map;
 
-import java.util.ArrayList;
+import static java.util.AbstractMap.SimpleEntry;
+
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -8,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Ex01 {
 	public static void main(String[] args) {
@@ -24,9 +28,22 @@ public class Ex01 {
 		System.out.println("Budget Coffee: " + budget.get("Coffee"));
 		System.out.println("Budget Football: " + budget.getOrDefault("Football", 20));
 
-		budget = sortByValue(budget);
+		// budget = sortByValue(budget);
 
-		loop(budget);
+		Map<String, Integer> sortedMap = budget.entrySet().stream()
+				.sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+
+		loop(sortedMap);
+
+		Entry<String, Integer> first = new SimpleEntry<>("Lunch", 20);
+		Entry<String, Integer> second = new SimpleEntry<>("Coffee", 30);
+		Entry<String, Integer> third = new SimpleEntry<>("Lunch", 40);
+
+		Map<String, Integer> foodMap = Arrays.asList(first, second, third).stream()
+				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e2));
+
+		loop(foodMap);
 	}
 
 	private static void loop(Map<String, Integer> budget) {
