@@ -62,7 +62,10 @@ public class Employee {
 		Employee that = (Employee) obj;
 		return getId() == that.getId();
 	}
-
+	@Override
+public int hashCode() {
+	return super.hashCode();
+}
 	@Override
 	public String toString() {
 		return id + " - " + fullName + ", " + age + ", " + titel;
