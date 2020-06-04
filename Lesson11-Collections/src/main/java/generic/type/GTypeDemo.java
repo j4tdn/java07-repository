@@ -5,8 +5,8 @@ public class GTypeDemo {
 		FakeList<String> strings = new FakeList<>();
 		System.out.println("size: " + strings.size());
 		System.out.println("class: " + strings.getClass());
-		strings.add("Hi");
-		strings.add("Hello");
+		strings.add(0, "Hi");
+		strings.add(1, "Hello");
 		// forEach
 		// add(int index, E e)
 		// remove(int i)
