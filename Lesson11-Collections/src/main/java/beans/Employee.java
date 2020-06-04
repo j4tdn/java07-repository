@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Objects;
+
 import common.Title;
 
 public class Employee {
@@ -61,6 +63,11 @@ public class Employee {
 		}
 		Employee that = (Employee) obj;
 		return getId() == that.getId();
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 	@Override
