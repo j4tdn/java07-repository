@@ -1,5 +1,7 @@
 package Been;
 
+import java.util.Objects;
+
 import commom.Tetle;
 
 public class Employee {
@@ -67,6 +69,9 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", fullName=" + fullName + ", age=" + age + ", title=" + title + "]";
+	}
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 }
