@@ -1,23 +1,23 @@
+
 package beans;
 
 import common.Title;
 
 public class Employee {
 	private int id;
-	private String fullname;
+	private String fullName;
 	private int age;
-	private Title title;
-
-	public Employee(int id, String fullname, int age, Title title) {
-		super();
-		this.id = id;
-		this.fullname = fullname;
-		this.age = age;
-		this.title = title;
-	}
+	private Title titel;
 
 	public Employee() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(int id, String fullName, int age, Title titel) {
+		super();
+		this.id = id;
+		this.fullName = fullName;
+		this.age = age;
+		this.titel = titel;
 	}
 
 	public int getId() {
@@ -28,12 +28,12 @@ public class Employee {
 		this.id = id;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public int getAge() {
@@ -44,17 +44,12 @@ public class Employee {
 		this.age = age;
 	}
 
-	public Title getTitle() {
-		return title;
+	public Title getTitel() {
+		return titel;
 	}
 
-	public void setTitle(Title title) {
-		this.title = title;
-	}
-
-	@Override
-	public String toString() {
-		return id + ", " + fullname + " ," + age + " ," + title;
+	public void setTitel(Title titel) {
+		this.titel = titel;
 	}
 
 	@Override
@@ -66,8 +61,15 @@ public class Employee {
 			return false;
 		}
 		Employee that = (Employee) obj;
-
 		return getId() == that.getId();
 	}
-
+	@Override
+public int hashCode() {
+	return super.hashCode();
 }
+	@Override
+	public String toString() {
+		return id + " - " + fullName + ", " + age + ", " + titel;
+	}
+}
+
