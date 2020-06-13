@@ -62,7 +62,5 @@ public class Apple {
 		return a.getColor().equals(a.getColor()) 
 				&& a.getOrigin().equals(a.getOrigin()) 
 				&& a.getWeight() == getWeight(); 
-	}
-	
-	
+	}	
 }

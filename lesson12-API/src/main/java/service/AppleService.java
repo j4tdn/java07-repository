@@ -3,13 +3,9 @@ package service;
 import java.util.List;
 
 import beans.Apple;
-import predivate.ApplePredivate;
-
+import predicate.StrategyPredicate;
 public interface AppleService {
 	List<Apple> getAll();
-	
-	List<Apple> filter(List<Apple> inventory, Object predicate );
 
-	
-	
+	List<Apple> filter(List<Apple> inventory, StrategyPredicate<Apple> predicate );
 }
