@@ -29,14 +29,7 @@ public class AppleView {
 		Map<String, Integer> map = inventory.stream().collect(Collectors.toMap(Apple::getColor, Apple::getWeight, (a1, a2) -> a1));
 		
 		show(inventory);
-		map.forEach(new BiConsumer<String, Integer>() {
-
-			@Override
-			public void accept(String t, Integer u) {
-				System.out.println(t + "->" + u);
-			}
-			
-		});
+		map.forEach((k, v) -> System.out.println(k +"->" + v));
 	}
 	
 	private static <T> void show(List<?> inventory) {                                 
