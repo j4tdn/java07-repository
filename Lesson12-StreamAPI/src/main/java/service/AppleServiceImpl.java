@@ -15,7 +15,6 @@ public class AppleServiceImpl implements AppleService {
 	
 	@Override
 	public List<Apple> getAll() {
-		// load data from database => service => view
 		return dao.getAll();
 	}
 

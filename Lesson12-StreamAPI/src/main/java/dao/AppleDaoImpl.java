@@ -9,7 +9,6 @@ public class AppleDaoImpl implements AppleDao{
 
 	@Override
 	public List<Apple> getAll() {
-		// TODO Auto-generated method stub
 		return mockData();
 	}
 	private List<Apple> mockData(){

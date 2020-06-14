@@ -8,7 +8,12 @@ public class Apple {
 	private int weight;
 
 	public Apple() {
-		super();
+		System.out.println("Apple no parameter");
+	}
+
+	public Apple(String color) {
+		System.out.println("Apple 1 parameter");
+		this.color = color;
 	}
 
 	public Apple(String color, String origin, int weight) {
@@ -56,15 +61,13 @@ public class Apple {
 			return false;
 		}
 		Apple a = (Apple) o;
-		return a.getColor().equals(getColor()) 
-				&& a.getOrigin().equals(getOrigin()) 
-				&& a.getWeight() == getWeight();
+		return a.getColor().equals(getColor()) && a.getOrigin().equals(getOrigin()) && a.getWeight() == getWeight();
 
 	}
 
 	@Override
 	public String toString() {
-		return "color=" + color + ", origin=" + origin + ", weight=" + weight ;
+		return "color=" + color + ", origin=" + origin + ", weight=" + weight;
 	}
-	
+
 }
