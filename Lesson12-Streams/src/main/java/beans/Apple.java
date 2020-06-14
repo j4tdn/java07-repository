@@ -8,11 +8,15 @@ public class Apple {
 	private int weight;
 
 	public Apple() {
-		super();
+		System.out.println("0");
+	}
+	
+	public Apple(String color) {
+		System.out.println("1");
+		this.color = color;
 	}
 
 	public Apple(String color, String origin, int weight) {
-		super();
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
