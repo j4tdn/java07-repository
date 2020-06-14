@@ -8,7 +8,11 @@ public class Apple {
 	private int weight;
 	
 	public Apple() {
-		super();
+		System.out.println("Default constructor");
+	}
+	
+	public Apple(String color) {
+		this.color = color;
 	}
 
 	public Apple(String color, String origin, int weight) {

@@ -1,4 +1,4 @@
-package predicate;
+package function;
 
 @FunctionalInterface
 public interface StrategyPredicate<T> {
