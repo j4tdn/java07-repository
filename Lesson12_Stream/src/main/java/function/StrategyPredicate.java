@@ -1,4 +1,4 @@
-package predicate;
+package function;
 
 import beans.Apple;
 

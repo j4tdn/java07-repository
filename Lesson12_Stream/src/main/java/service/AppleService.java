@@ -3,7 +3,7 @@ package service;
 import java.util.List;
 
 import beans.Apple;
-import predicate.StrategyPredicate;
+import function.StrategyPredicate;
 
 public interface AppleService {
 	

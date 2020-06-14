@@ -7,8 +7,12 @@ public class Apple {
 	private String origin;
 	private int weight;
 
-	Apple() {
+	public Apple() {
 
+	}
+
+	public Apple(String color) {
+		this.color = color;
 	}
 
 	public Apple(String color, String origin, int weight) {
