@@ -11,6 +11,10 @@ public class Apple {
 		super();
 	}
 	
+	public Apple(String color) {
+		this.color = color;
+	}
+	
 	public Apple(String color, String origin, int weight) {
 		super();
 		this.color = color;

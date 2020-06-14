@@ -7,7 +7,7 @@ import java.util.List;
 import beans.Apple;
 import dao.AppleDao;
 import dao.AppleDaoImpl;
-import predicate.StrateryPredicate;
+import functions.StrateryPredicate;
 
 public class AppleServiceImpl implements AppleService{
 	
