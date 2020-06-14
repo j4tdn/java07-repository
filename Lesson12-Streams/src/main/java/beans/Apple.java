@@ -10,8 +10,11 @@ public class Apple {
 	public Apple() {
 	}
 
+	public Apple(String color) {
+		this.color = color;
+	}
+
 	public Apple(String color, String origin, int weight) {
-		super();
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
