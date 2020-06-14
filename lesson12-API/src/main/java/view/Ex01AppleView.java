@@ -1,9 +1,18 @@
 package view;
 
+import java.io.ObjectInputStream.GetField;
+import java.nio.Buffer;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import beans.Apple;
-import predicate.StrategyPredicate;
+import functions.StrategyPredicate;
 import service.AppleService;
 import service.AppleServiceImpl;
 
@@ -12,23 +21,44 @@ public class Ex01AppleView {
 
 	public static void main(String[] args) {
 		List<Apple> inventory = service.getAll();
-		show(inventory);
+		// show(inventory);
 		// anomimus class
-		
-		StrategyPredicate<Apple> pre = (Apple a ) -> {return true;};
-		
-		
-		List<Apple> expected = service.filter(inventory, (Apple a) -> a.getWeight() > 100);
-		List<Apple> expectedGreenAplle = service.filter(inventory, (Apple a) -> "green".equals(a.getColor()));
-		show(expected);
-		show(expectedGreenAplle);
 
+		StrategyPredicate<Apple> pre = (Apple a) -> {
+			return true;
+		};
+
+		List<Apple> expected = service.filter(inventory, (Apple a) -> a.getWeight() > 100);
+		List<Apple> GreenAplle = service.filter(inventory, (Apple a) -> "green".equals(a.getColor()));
+		// show(expected);
+		show(GreenAplle);
+
+		List<String> countries = map(GreenAplle, Apple::getOrigin);
+
+		// put definition into practice
+		inventory.sort(Comparator.comparing(Apple::getColor));
+
+		Map<String, Integer> map = inventory.stream()
+				.collect(Collectors.toMap(Apple::getColor, Apple::getWeight, (i1, i2) -> i1));
+		map.forEach((k, v) -> System.out.println(k + " ," + v));
 	}
 
-	private static void show(List<Apple> inventory) {
-		for (Apple apple : inventory) {
-			System.out.println(apple);
+//truyeefn vao T ra ve R
+	private static <T, R> List<R> map(List<T> ts, Function<T, R> func) {
+		List<R> result = new ArrayList<>();
+		for (T t : ts) {
+			result.add(func.apply(t));
 		}
+		return result;
+	}
+
+	private static <T> void show(List<?> inventory) {
+
+		// Consumer<Apple> con = System.out::println;
+		inventory.forEach(System.out::println);
+		// Function<Apple, String> function = a -> a.getColor(); thay thế bằng
+		// Function<Apple, String> function = Apple::getColor;
+
 	}
 
 }

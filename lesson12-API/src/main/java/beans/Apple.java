@@ -10,6 +10,7 @@ public class Apple {
 	public Apple() {
 	}
 
+	
 	public String getColor() {
 		return color;
 	}
@@ -38,7 +39,11 @@ public class Apple {
 	public String toString() {
 		return color + "," + weight + "," +origin;
 	}
-
+	public Apple(String color) {
+		System.out.println("123Apple");
+		this.color = color;
+	}
+	
 	public Apple(String color, String origin, int weight) {
 		super();
 		this.color = color;
