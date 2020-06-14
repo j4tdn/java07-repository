@@ -17,6 +17,11 @@ public class Apple {
 		this.origin = origin;
 		this.weight = weight;
 	}
+	public Apple(String color) {
+		super();
+		this.color = color;
+		
+	}
 
 	public String getColor() {
 		return color;
