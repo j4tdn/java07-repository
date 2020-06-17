@@ -10,8 +10,8 @@ public class Ex04 {
 	public static void main(String[] args) {
 		List<Integer> digits = random(5);
 
-		Collections.sort(digits, (i1, i2) -> i2.compareTo(i1));
-		digits.forEach(number -> System.out.print(number + " "));
+//		Collections.sort(digits, (i1, i2) -> i2.compareTo(i1));
+//		digits.forEach(number -> System.out.print(number + " "));
 
 		System.out.println("\n=========");
 		Collections.reverse(digits);
