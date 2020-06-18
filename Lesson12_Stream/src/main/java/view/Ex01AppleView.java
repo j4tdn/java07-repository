@@ -11,7 +11,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import beans.Apple;
-import function.StrategyPredicate;
+import function.Predicate;
 import service.AppleService;
 import service.AppleServiceImpl;
 
@@ -30,8 +30,7 @@ public class Ex01AppleView {
 		Function<String, Apple> f = s -> null;
 
 		Comparator<Integer> c = (i1, i2) -> 0;
-
-		StrategyPredicate<Apple> s = (a) -> true;
+		Predicate<Apple> s = (a) -> true;
 
 		// end Ex
 		// anonymous function thay cho anonymous class khi anonymous class chỉ có 1 hàm

@@ -6,6 +6,7 @@ public class Apple {
 	private String color;
 	private String origin;
 	private int weight;
+	private Store store;
 
 	public Apple() {
 
@@ -19,6 +20,13 @@ public class Apple {
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
+	}
+
+	public Apple(String color, String origin, int weight, Store store) {
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+		this.store = store;
 	}
 
 	public String getColor() {
@@ -45,6 +53,14 @@ public class Apple {
 		this.weight = weight;
 	}
 
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(color, origin, weight);
@@ -67,7 +83,7 @@ public class Apple {
 
 	@Override
 	public String toString() {
-		return origin + "-" + color + "-" + weight;
+		return origin + "-" + color + "-" + weight + "-" + store;
 	}
 
 }
