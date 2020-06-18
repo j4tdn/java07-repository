@@ -8,6 +8,11 @@ public class Apple {
 	private int weight;
 
 	public Apple() {
+		System.out.println("Default constructor");
+	}
+	public Apple(String color) {
+		System.out.println("Apple 1 parameter");
+		this.color=color;
 	}
 
 	public Apple(String color, String origin, int weight) {
