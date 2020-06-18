@@ -6,11 +6,12 @@ public class Apple {
 	private String color;
 	private String origin;
 	private int weight;
+	private Store store;
 
 	public Apple() {
-		System.out.println("0");
+
 	}
-	
+
 	public Apple(String color) {
 		System.out.println("1");
 		this.color = color;
@@ -20,6 +21,13 @@ public class Apple {
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
+	}
+
+	public Apple(String color, String origin, int weight, Store store) {
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+		this.store = store;
 	}
 
 	public String getColor() {
@@ -44,6 +52,14 @@ public class Apple {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	@Override
