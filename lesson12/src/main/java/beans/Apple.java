@@ -6,6 +6,7 @@ public class Apple {
 	private String color;
 	private String origin;
 	private int weight;
+	private Store store;
 
 	public Apple() {
 		// TODO Auto-generated constructor stub
@@ -16,7 +17,25 @@ public class Apple {
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
+		
+		
 	}
+	public Apple(String color, String origin, int weight,Store store) {
+		super();
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+		this.store= store;
+		
+	}
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
 	public Apple(String color) {
 		super();
 		this.color = color;
