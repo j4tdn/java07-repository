@@ -6,6 +6,7 @@ public class Apple {
 	private String color;
 	private String origin;
 	private int weight;
+	private Store store;
 
 	public Apple() {
 		System.out.println("default constructor");
@@ -16,11 +17,27 @@ public class Apple {
 		this.color = color;
 	};
 
+	public Apple(String color, String origin, int weight, Store store) {
+		super();
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+		this.store = store;
+	}
+
 	public Apple(String color, String origin, int weight) {
 		super();
 		this.color = color;
 		this.origin = origin;
 		this.weight = weight;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	public String getColor() {

@@ -17,8 +17,7 @@ public class Ex02ConstructorReference {
 		LinkedHashMap<String, Integer> map = supplier.get();
 
 		String students = "john-adam-anne";
-		String[] filtered = Pattern.compile("-").splitAsStream(students)
-				.filter(s -> s.startsWith("a"))
+		String[] filtered = Pattern.compile("-").splitAsStream(students).filter(s -> s.startsWith("a"))
 				.toArray(String[]::new);
 		// Arrays.asList(filtered).forEach(System.out::println);
 		Arrays.stream(filtered).forEach(System.out::println);
