@@ -7,7 +7,7 @@ import java.util.List;
 import beans.Apple;
 import dao.AppleDao;
 import dao.AppleDaoImpl;
-import predicate.ApplePredicate;
+import predicate.Predicate;
 
 public class AppleServiceImpl implements AppleService {
 	private AppleDao dao = new AppleDaoImpl();
@@ -19,7 +19,7 @@ public class AppleServiceImpl implements AppleService {
 	}
 
 	@Override
-	public List<Apple> filter(List<Apple> inventory, ApplePredicate<Apple> predicate) {
+	public List<Apple> filter(List<Apple> inventory, Predicate<Apple> predicate) {
 		if (inventory == null || inventory.isEmpty() || predicate == null) {
 			return Collections.emptyList();
 		}

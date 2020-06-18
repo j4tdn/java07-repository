@@ -1,6 +1,6 @@
 package predicate;
 
 @FunctionalInterface
-public interface ApplePredicate<T> {
+public interface Predicate<T> {
 	boolean test(T t);
 }
