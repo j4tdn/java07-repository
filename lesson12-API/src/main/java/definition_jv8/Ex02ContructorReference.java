@@ -29,10 +29,12 @@ public class Ex02ContructorReference {
 
 		List<Apple> apples = map(Arrays.asList("black", "white"), Apple::new);
 		apples.forEach(System.out::println);
-		
+	
 		TriFunction<String, String, Integer, Apple> trifunction = Apple::new;
 		Apple a = trifunction.apply("yellow", "VietNam", 220);
 		System.out.println(a);
+		
+		
 	}
 
 	// map string(origin) -> apple
