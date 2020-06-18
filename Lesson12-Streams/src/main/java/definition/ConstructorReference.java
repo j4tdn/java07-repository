@@ -30,7 +30,7 @@ public class ConstructorReference {
 		Function<String, Apple> func = Apple::new;
 		func.apply("blue");
 		
-		TriFunction<String, String, Integer, Apple> triFunc = Apple::new;
+		TriFunction<String, String, Integer ,Apple> triFunc = Apple::new;
 		Apple a = triFunc.apply("red", "VietNam", 80);
 		System.out.println(a);
 		

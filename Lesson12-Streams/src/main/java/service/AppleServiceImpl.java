@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 import beans.Apple;
 import dao.AppleDao;
@@ -22,7 +23,7 @@ public class AppleServiceImpl implements AppleService{
 
 
 	@Override
-	public List<Apple> filter(List<Apple> inventory, StrateryPredicate<Apple> predicate) {
+	public List<Apple> filter(List<Apple> inventory, Predicate<Apple> predicate) {
 		if (predicate == null || inventory == null || inventory.isEmpty()) {
 			return Collections.emptyList();
 		}
