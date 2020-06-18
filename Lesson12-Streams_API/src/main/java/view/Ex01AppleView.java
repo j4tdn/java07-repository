@@ -13,18 +13,17 @@ public class Ex01AppleView {
 
 	public static void main(String[] args) {
 		List<Apple> inventory = sevice.getAll();
-		StrategyPredicate<Apple> predicate = (Apple a)-> {return true};
-			
-		
-		
-		
-		//List<Apple> greenApples = sevice.filter(inventory,predicate);
-		
+		StrategyPredicate<Apple> predicate = (Apple a) -> {
+			return true;
+		};
+
+		// List<Apple> greenApples = sevice.filter(inventory,predicate);
+
 		show(inventory);
 	}
-	
+
 	private static <T> void show(List<T> inventory) {
-		for (Apple apple : inventory) {
+		for (T apple : inventory) {
 			System.out.println(apple);
 		}
 	}

@@ -4,9 +4,10 @@ import java.util.List;
 
 import beans.Apple;
 
+
+import Predicate.StrategyPredicate;
+
 public interface AppleSevice {
-	// interface access modifier default : public
-	public <T> List<T> getAll();
-	
-	public <T> List<T> filter(List<Apple> inventory );
+	List<Apple> getAll();
+	List<Apple> filter (List<Apple> inventory, StrategyPredicate<Apple> predicate);
 }
