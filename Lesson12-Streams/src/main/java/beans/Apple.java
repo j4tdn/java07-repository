@@ -4,18 +4,40 @@ import java.util.Objects;
 
 public class Apple {
 	private String color;
-	private int weigth;
 	private String origin;
+	private int weight;
+	private Store store;
 
 	public Apple() {
-		// TODO Auto-generated constructor stub
-	}
+		System.out.println("default constructor");
+	};
 
-	public Apple(String color, int weigth, String origin) {
+	public Apple(String color) {
+		System.out.println("Apple 1 parameter");
+		this.color = color;
+	};
+
+	public Apple(String color, String origin, int weight, Store store) {
 		super();
 		this.color = color;
-		this.weigth = weigth;
 		this.origin = origin;
+		this.weight = weight;
+		this.store = store;
+	}
+
+	public Apple(String color, String origin, int weight) {
+		super();
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	public String getColor() {
@@ -26,14 +48,6 @@ public class Apple {
 		this.color = color;
 	}
 
-	public int getWeigth() {
-		return weigth;
-	}
-
-	public void setWeigth(int weigth) {
-		this.weigth = weigth;
-	}
-
 	public String getOrigin() {
 		return origin;
 	}
@@ -42,27 +56,32 @@ public class Apple {
 		this.origin = origin;
 	}
 
-	@Override
-	public int hashCode() {
+	public int getWeight() {
+		return weight;
+	}
 
-		return Objects.hash(color, origin, weigth);
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(color, origin, weight);
+	}
+
 	public boolean equals(Object o) {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || (o instanceof Apple)) {
+		if (o == null || !(o instanceof Apple)) {
 			return false;
 		}
 		Apple a = (Apple) o;
-		return a.getColor().equals(getColor()) && a.getOrigin().equals(getOrigin()) && a.getWeigth() == getWeigth();
+		return a.getColor().equals(getColor()) && a.getOrigin().equals(getOrigin()) && a.getWeight() == weight;
 	}
 
 	@Override
 	public String toString() {
-		return "color :" + color + " ," + "weigth :" + weigth + " ," + "origin :" + origin;
+		return origin + ",  " + color + ",  " + weight;
 	}
-
 }
