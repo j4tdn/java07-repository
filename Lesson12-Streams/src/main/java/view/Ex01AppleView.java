@@ -6,66 +6,61 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import bean.Apple;
+import beans.Apple;
 import service.AppleService;
-import service.AppleServiceImplement;
+import service.AppleServiceImpl;
 
 public class Ex01AppleView {
-	private static AppleService service = new AppleServiceImplement();
 
-	public static void main(String[] args) {
+	private static AppleService service = new AppleServiceImpl();
+
+	public static <U> void main(String[] args) {
 		List<Apple> inventory = service.getAll();
 
-		List<Apple> greenApple = service.filter(inventory, apple -> "green".equals((apple).getColor()));
+		List<Apple> expected = service.filter(inventory, a -> a.getWeight() < 200);
+		List<Apple> greenApples = service.filter(inventory, a -> "green".equals(a.getColor()));
 
-		show(inventory);
-		System.out.println("======================");
-		show(greenApple);
-		System.out.println("======================");
-//		
-//		Function<Apple, String> function = new Function<Apple, String>() {
-//
-//			@Override
-//			public String apply(Apple t) {
-//				// TODO Auto-generated method stub
-//				return null;
-//			}
-//		};
-//		
-		List<String> countries = map(greenApple, Apple::getOrigin);
+		show(expected);
+
+		System.out.println("=======================");
+		show(greenApples);
+
+		List<String> countries = map(greenApples, Apple::getOrigin);
+
+		System.out.println("=======================");
 		show(countries);
-		System.out.println("======================");
 
 		// put definition into practice
 		inventory.sort(Comparator.comparing(Apple::getColor));
-		show(inventory);
-		System.out.println("======================");
 
 		Map<String, Integer> map = inventory.stream()
 				.collect(Collectors.toMap(Apple::getColor, Apple::getWeight, (i1, i2) -> i1));
+		
+		System.out.println("=======================");
+		show(inventory);
+
+		System.out.println("=======================");
 		map.forEach(new BiConsumer<String, Integer>() {
 
 			@Override
-			public void accept(String k, Integer v) {
-				System.out.println(k + "=>" + v);
+			public void accept(String t, Integer u) {
+				System.out.println(t + "=> " + u);
 			}
 		});
-		System.out.println("======================");
 	}
 
-	private static <T, R> List<R> map(List<T> ts, Function<T, R> function) {
-		List<R> results = new ArrayList<>();
+	private static <T, R> List<R> map(List<T> ts, Function<T, R> func) {
+		List<R> result = new ArrayList<>();
+
 		for (T t : ts) {
-			results.add(function.apply(t));
+			result.add(func.apply(t));
 		}
-		return results;
+		return result;
 	}
 
 	private static void show(List<?> inventory) {
 		inventory.forEach(System.out::println);
 	}
-
 }

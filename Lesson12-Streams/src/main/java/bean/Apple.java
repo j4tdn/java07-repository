@@ -1,4 +1,4 @@
-package bean;
+package beans;
 
 import java.util.Objects;
 
@@ -6,12 +6,14 @@ public class Apple {
 	private String color;
 	private String origin;
 	private int weight;
-	
+	private Store store;
+
 	public Apple() {
-		System.out.println("Default constructor");
+
 	}
-	
+
 	public Apple(String color) {
+		System.out.println("1");
 		this.color = color;
 	}
 
@@ -21,24 +23,11 @@ public class Apple {
 		this.weight = weight;
 	}
 
-	public int hashCode() {
-		return Objects.hash(origin, color, weight);
-	}
-
-	public boolean equals(Object obj) {
-		if(this == obj) {
-			return true;
-		}
-		if(obj == null || obj instanceof Apple)  {
-			return false;
-		}
-		Apple a = (Apple) obj;
-		return color.equals(a.getColor()) && origin.equals(a.getOrigin()) && weight == a.getWeight();
-	}
-
-	@Override
-	public String toString() {
-		return "origin=" + origin + ", color=" + color + ", weight=" + weight;
+	public Apple(String color, String origin, int weight, Store store) {
+		this.color = color;
+		this.origin = origin;
+		this.weight = weight;
+		this.store = store;
 	}
 
 	public String getColor() {
@@ -63,5 +52,37 @@ public class Apple {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(color, origin, weight);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+
+		if (o == null || !(o instanceof Apple)) {
+			return false;
+		}
+
+		Apple a = (Apple) o;
+		return a.getColor().equals(getColor()) && a.getOrigin().equals(getOrigin()) && a.getWeight() == getWeight();
+	}
+
+	@Override
+	public String toString() {
+		return origin + ", " + color + ", " + weight;
 	}
 }
