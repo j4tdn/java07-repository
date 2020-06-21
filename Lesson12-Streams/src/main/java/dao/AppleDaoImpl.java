@@ -20,11 +20,13 @@ public class AppleDaoImpl implements AppleDao {
 		Store s3 = new Store("s3", "Store 103", "A3");
 
 		List<Apple> apples = new ArrayList<>();
-		apples.add(new Apple("green", "Lao", 80, s1));
+		apples.add(new Apple("green", "England", 80, s1));
 		apples.add(new Apple("red", "Lao", 160, s3));
 		apples.add(new Apple("green", "Vietnam", 120, s3));
 		apples.add(new Apple("red", "Vietnam", 240, s2));
-		apples.add(new Apple("green", "Lao", 180, s1));
+		// duplicate apple
+		apples.add(new Apple("green", "Lao", 80, s1));
+		apples.add(new Apple("green", "Korea", 180, s1));
 		return apples;
 	}
 }
