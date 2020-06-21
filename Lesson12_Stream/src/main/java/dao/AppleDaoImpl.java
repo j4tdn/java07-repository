@@ -24,6 +24,7 @@ public class AppleDaoImpl implements AppleDao {
 		apples.add(new Apple("yellow", "Lao", 190, s1));
 		apples.add(new Apple("red", "China", 170, s3));
 		apples.add(new Apple("green", "VN", 120, s2));
+		apples.add(new Apple("green", "Indo", 180, s1));
 		return apples;
 
 	}
