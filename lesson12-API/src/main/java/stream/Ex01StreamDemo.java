@@ -43,8 +43,8 @@ public class Ex01StreamDemo {
 		distinct.forEach(System.out::println);
 		System.out.println("===============================");
 		Set<String> originSet = new HashSet<>();
-		Array[] apples = inventory.stream().filter(disticByKey(Apple::getOrigin)).toArray(Apple);
-		Arrays.stream(apples).forEach(System.out::println);
+		//Array[] apples = inventory.stream().filter(disticByKey(Apple::getOrigin)).toArray(Apple);
+		//Arrays.stream(apples).forEach(System.out::println);
 	}
 	private static<T,R> Predicate<T> disticByKey(Function<T, R> func){
 		Set<String> origins = new HashSet<String>();
