@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 import beans.Trader;
 import beans.Transaction;
 
@@ -78,6 +80,7 @@ public class Ex05TraderDemo {
 	}
 
 	private static int question8(List<Transaction> list) {
-		return list.stream().reduce((a, b) -> a.getValue() < b.getValue() ? a : b).get().getValue();
+		return list.stream()
+				.mapToInt(Transaction::getValue).min().getAsInt();
 	}
 }
