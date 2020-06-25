@@ -81,6 +81,6 @@ public class Apple {
 
 	@Override
 	public String toString() {
-		return origin + "-" + color + "-" + weight + "-" + store;
+		return this.origin + "-" + this.color + "-" + this.weight + "-" + this.store;
 	}
 }
