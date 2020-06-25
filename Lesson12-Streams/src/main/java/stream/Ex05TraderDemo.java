@@ -53,8 +53,7 @@ public class Ex05TraderDemo {
 		System.out.println(request7.getValue());
 
 		System.out.println("=======================");
-		Integer request8 = transactions.stream().reduce((tr1, tr2) -> tr1.getValue() < tr2.getValue() ? tr1 : tr2).get()
-				.getValue();
+		Integer request8 = transactions.stream().mapToInt(Transaction::getValue).min().getAsInt();
 		System.out.println(request8);
 	}
 }
