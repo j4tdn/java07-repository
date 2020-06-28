@@ -31,7 +31,7 @@ public class FileUtils {
 	}
 
 	public static File createFile(String pathname) {
-		File file = new File("JAVA0X\\data\\readme.txt");
+		File file = new File(pathname);
 		File parent = file.getParentFile();
 		if (!parent.exists()) {
 			boolean isParentCreated = parent.mkdirs();
