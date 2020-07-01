@@ -28,8 +28,8 @@ public class Ex05_TraderDemo {
 		//List<Transaction> tran =tran.stream().filter(tran -> tran.getYear() == 2011).sorted(Comparator.comparing(Transaction::value));
 
 		List<String> city = traders.stream().map(tran -> tran.getLiveCity()).distinct().collect(Collectors.toList());
-		List<Trader> trader = traders.stream().filter(t -> "Cambridge".equals(t.getLiveCity())).sorted(Comparator.comparing(t::value)).collec(Collectors.toList());
-		boolean stder = trader.stream().anyMatch(t -> "Milan".equals(t.getLiveCity()));
+		//List<Trader> trader = traders.stream().filter(t -> "Cambridge".equals(t.getLiveCity())).sorted(Comparator.comparing(t::value)).collec(Collectors.toList());
+		//boolean stder = trader.stream().anyMatch(t -> "Milan".equals(t.getLiveCity()));
 		transactions.stream().filter(t -> "Cambrdge".equals(t.getTrader())).map(Transaction::getValue);
 		Optional<Integer> tranSum = transactions.stream().map(Transaction::getValue).reduce((a, b) -> a > b ? a : b);
 		OptionalInt tranSum3 = transactions.stream().mapToInt(Transaction::getValue).max();
