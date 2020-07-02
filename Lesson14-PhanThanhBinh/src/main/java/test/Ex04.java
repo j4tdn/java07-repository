@@ -15,9 +15,17 @@ import beans.Student;
 public class Ex04 {
 	public static void main(String[] args) throws IOException {
 		List<Student> students = getAll("student.txt");
+		show(students);
+		System.out.println("=========");
 		List<Student> preScore = getPredicate(students, a -> a.getScore() > 8);
+		show(preScore);
+		System.out.println("=========");
 		List<Student> preGender = getPredicate(students, a -> a.getGender().equals("Nu"));
+		show(preGender);
+		System.out.println("=========");
 		List<Student> sortGender = sort(students, Comparator.comparing(Student::getGender).thenComparing(Student::getScore).reversed());
+		show(sortGender);
+		System.out.println("=========");
 		
 	}
 	
@@ -35,6 +43,10 @@ public class Ex04 {
 					}
 				}).collect(Collectors.toList());
 		return students;
+	}
+	
+	private static void show(List<Student> students) {
+		students.forEach(System.out::println);
 	}
 	
 	private static  List<Student> getPredicate(List<Student> students, Predicate<Student> predicate) {
