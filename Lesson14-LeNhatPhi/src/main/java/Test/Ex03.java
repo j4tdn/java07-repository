@@ -9,7 +9,9 @@ public class Ex03 { // WRONG
 		System.out.println(compareString(str1, str2));
 	}
 	public static boolean compareString(String str1, String str2) {
-		if (!str1.contains(str2)) {
+		int s1 = str1.length();
+		int s2 = str2.length();
+		if(s1!=s2) {
 			return false;
 		}
 		return true;
