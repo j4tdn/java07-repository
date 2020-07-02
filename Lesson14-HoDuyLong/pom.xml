@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>java07</groupId>
-  <artifactId>Lesson14-PhanThanhTrung</artifactId>
+  <groupId>hoduylong</groupId>
+  <artifactId>Lesson14-HoDuyLong</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Lesson14-PhanThanhTrung</name>
+  <name>Lesson14-HoDuyLong</name>
   <url>http://maven.apache.org</url>
 
   <properties>
