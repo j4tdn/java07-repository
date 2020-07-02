@@ -1,8 +1,11 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer {
+public class Customer implements Serializable {
+	private static final long serialVersionUID = -1521788701925647874L;
+
 	private String name;
 	private String phone;
 	private String city;
