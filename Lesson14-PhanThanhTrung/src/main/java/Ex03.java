@@ -1,9 +1,9 @@
 
-public class Ex02 {
+public class Ex03 {
 	public static void main(String[] args) {
 		String str = "ABCD";
 		int n = str.length();
-		Ex02 permutation = new Ex02();
+		Ex03 permutation = new Ex03();
 		permutation.permute(str, 0, n - 1);
 	}
 

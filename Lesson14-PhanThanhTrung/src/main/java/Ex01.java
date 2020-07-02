@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Ex011 {
+public class Ex01 {
 	public static void main(String args[]) {
 		int arr[] = { 7, 7, 8, 8, 9, 1, 1, 4, 2, 2 };
 		int arr2[] = { 5, 7, 9, 10, 20, 9, 7, 11 };
