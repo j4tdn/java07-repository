@@ -7,7 +7,7 @@ public class Ex03 {
 		permutation.permute(str, 0, n - 1);
 	}
 
-	private void permute(String str, int l, int r) {
+	private static void permute(String str, int l, int r) {
 		if (l == r)
 			System.out.println(str);
 		else {
@@ -18,7 +18,8 @@ public class Ex03 {
 			}
 		}
 	}
-	public String swap(String a, int i, int j) {
+
+	private static String swap(String a, int i, int j) {
 		char temp;
 		char[] charArray = a.toCharArray();
 		temp = charArray[i];

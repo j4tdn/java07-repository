@@ -16,7 +16,7 @@ public class Ex01 {
 		printRepeating(arr2, m);
 	}
 
-	static void occurredOnce(int arr[], int n) {
+	private static void occurredOnce(int arr[], int n) {
 		Arrays.sort(arr);
 		if (arr[0] != arr[1])
 			System.out.println(arr[0] + " ");
@@ -27,7 +27,7 @@ public class Ex01 {
 			System.out.print(arr[n - 1] + " ");
 	}
 
-	static void printRepeating(int arr[], int n) {
+	private static void printRepeating(int arr[], int n) {
 		Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
 		for (int i = 0; i < n; i++) {
 			try {
