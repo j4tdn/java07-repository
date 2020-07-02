@@ -20,6 +20,7 @@ public class Ex03_Mathching {
 	//optional; kiểu dữ liệu mới trng java 8 gểnic type 
 	public static void main(String[] args) {
 		List<Integer> numbers = Arrays.asList(1,2,1,4,5,8,10,4,12);
+		
 		boolean anyMath =  numbers.stream().anyMatch(num -> num % 10 == 0);
 		// optional always != null
 		// value Integer might be null;

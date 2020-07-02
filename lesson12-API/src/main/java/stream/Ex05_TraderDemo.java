@@ -23,7 +23,8 @@ public class Ex05_TraderDemo {
 		List<Trader> traders = Arrays.asList(raoul, mario, alan, brian);
 		List<Transaction> transactions = Arrays.asList(new Transaction(brian, 2011, 300),
 				new Transaction(raoul, 2012, 1000), new Transaction(raoul, 2011, 400),
-				new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(alan, 2012, 950));
+				new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), 
+				new Transaction(alan, 2012, 950));
 
 		//List<Transaction> tran =tran.stream().filter(tran -> tran.getYear() == 2011).sorted(Comparator.comparing(Transaction::value));
 

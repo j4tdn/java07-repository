@@ -1,11 +1,16 @@
 package been;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class custumer {
-	private String name;
-	private String phone;
-	private String city;
+public class custumer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2015503871873281390L;
+	private transient String name;//transient laf 1 tham so.
+	private transient String phone;
+	private transient String city;
 
 	public String getName() {
 		return name;
@@ -50,10 +55,8 @@ public class custumer {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-
 		return Objects.hash(name, phone, city);
 	}
-
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {

@@ -10,11 +10,11 @@ import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 public class Ex02Crard {
 	public static void main(String[] args) {
-		List<String> first = Arrays.asList("2 cơ", "xì rô", "10 bích");
-		List<String> seconder = Arrays.asList("3 cơ", "xì rô", "8 bích");
-		List<String> third = Arrays.asList("4 cơ", "xì chuồn", "2 bích");
-		// List<String> fourth = Arrays.asList("5 cơ", "xì chuồn","7 bích");
-		// bietes laf 2 cơ thì dùng starwwith hoặc content
+		List<String> first = Arrays.asList("2 cÆ¡", "xiÌ€ rÃ´", "10 biÌ�ch");
+		List<String> seconder = Arrays.asList("3 cÆ¡", "xiÌ€ rÃ´", "8 biÌ�ch");
+		List<String> third = Arrays.asList("4 cÆ¡", "xiÌ€ chuÃ´Ì€n", "2 biÌ�ch");
+		// List<String> fourth = Arrays.asList("5 cÆ¡", "xiÌ€ chuÃ´Ì€n","7 biÌ�ch");
+		// bietes laf 2 cÆ¡ thÃ¬ dÃ¹ng starwwith hoáº·c content
 		List<List<String>> all = Arrays.asList(first, seconder, third);
 //		String result = all.stream().flatMap(List -> List.stream()
 //				.filter(card -> card.startsWith("2")).
