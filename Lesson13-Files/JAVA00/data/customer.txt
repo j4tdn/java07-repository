@@ -1,3 +1,0 @@
-trung,0123,hue
-hoang,12333,ha noi
-noi,12333333,hcm
