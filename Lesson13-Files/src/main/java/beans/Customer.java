@@ -1,11 +1,17 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Customer {
-	private String name;
-	private String phone;
-	private String city;
+public class Customer implements Serializable {
+	/**
+	 * 
+	 */
+	
+	private static final long serialVersionUID = -1521788701925647874L;
+	private transient String name;
+	private transient String phone;
+	private transient String city;
 
 	public Customer() {
 	}
@@ -56,8 +62,9 @@ public class Customer {
 		Customer that = (Customer) o;
 		return that.getName().equals(getName()) && that.phone.equals(getPhone()) && that.city.equals(getCity());
 	}
+
 	@Override
 	public String toString() {
-		return String.join(", ", name,phone,city);
+		return String.join(", ", name, phone, city);
 	}
 }

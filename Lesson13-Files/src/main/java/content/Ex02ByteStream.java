@@ -1,0 +1,40 @@
+package content;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
+import beans.Customer;
+import ultils.FileUltils;
+
+public class Ex02ByteStream {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		List<Customer> customers = Ex01Readble.getAll();
+		 String pathname ="JAVA07"+File.separator+"customer_Serialize.txt";
+		 File file = FileUltils.createFile(pathname);
+		 
+		 FileOutputStream fos = new FileOutputStream(file);
+		 ObjectOutputStream oos = new ObjectOutputStream(fos);
+		 
+		 oos.writeObject(customers);
+		 oos.close();
+		 fos.close();
+		 FileInputStream fis = new FileInputStream(file);
+		 ObjectInputStream ois = new ObjectInputStream(fis);
+		 
+		 @SuppressWarnings("unchecked")
+		List<Customer> result = (List<Customer>) ois.readObject();
+		 
+		 result.forEach(System.out::println);
+		 
+		 ois.close();
+		 fis.close();
+	}
+	
+	
+}
