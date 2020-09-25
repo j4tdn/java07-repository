@@ -1,0 +1,11 @@
+LOAIHANG(MaLoai, TenLoai)	
+MATHANG(MaMH, TenMH, SIZE, LoaiHang, GiaMua, GiaBan,...)
+KHACHHANG(MaKH, TenKh, email, sdt, tk, mk,...)	
+DONHANG(MaDH, Khach Hang, Dia ch? giao hang, SoDTGiaoHang, LoaiHinhThanhToan, DanhSachMatHang, SoLuongMoiMatHang,...)
+HOADON(MaHD, DonHang, NgayXuat, PhiVanChuyen, TongTien)
+TINHTRANGDONHANG(MaTTDH, Mota)	
+LOAIHINHTHANHTOAN(MaLHTT, Mota)
+NHANVIEN(MaNV, HoTen, DiaChi, SoDienThoai, NgaySinh, GioiTinh, PhongBan)
+PHONGBAN(Ma PB, Ten PB)
+
+
