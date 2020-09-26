@@ -1,0 +1,8 @@
+MATHANG(MaMH, TenMH, SIZE, LoaiHang, GiaMua, GiaBan, MoTa, SoLuong, NSX)
+KHACHHANG(MaKH, TenKH, Email, DiaChi, SoDienThoai, TaiKhoan, MatKhau)
+DONHANG(MaDH, KhachHang, DiaChiGiaoHang, SoDTGiaoHang, LoaiHinhThanhToan, DanhSachMatHang, SoLuongMoiMatHang, NgayDatHang, TinhTrang)
+HOADON(MaHD, DonHang, NgayXuat, PhiVanChuyen, TongTien)
+TINHTRANGDONHANG(MaTTDH, MoTa)
+LOAIHINHTHANHTOAN(MaLHTT, MoTa)
+NHANVIEN(MaNV, HoTen, DiaChi, SoDienThoai, NgaySinh, GioiTinh, PhongBan)
+PHONGBAN(MaPB, TenPB)
