@@ -1,0 +1,18 @@
+Tren co so doi tuong:
+
+Link:
+https://drive.google.com/file/d/1ZRPehLbb08uzYEj9rIzXfSXuPUyPpcQW/view?usp=sharing
+
+
+Tren co so mau tin:
+
+LOAIHANG(MaLoai*, TenLoai)
+MATHANG(MaMH*, TenMH, SIZE, LoaiHang, GiaMua, GiaBan, MoTa, SoLuong, NSX)
+DONHANG(MaDH*, KH, DiaChiGiaoHang, SDTGiaoHang, LHTT, DanhSachMH, SoLuongMoiMH, NgayDatHang, TinhTrang)
+KHACHHANG(MaKH*, TenKH, Email, DiaChi, SDT, TaiKhoan, MatKhau)
+TINHTRANGDONHANG(MaTTDH*, MoTa)
+HOADON(MaHD*, DonHang, NgayXuat, PhiVanChuyen, TongTien)
+LOAIHINHTHANHTOAN(MaLHTT*, MoTa)
+PHONGBAN(MaPB*, TenPB)
+NHANVIEN(MaNV*, HoTen, DiaChi, SDT, Ngaysinh, GioiTinh, PhongBan)
+
