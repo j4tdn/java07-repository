@@ -1,0 +1,11 @@
+Link: https://drive.google.com/file/d/1ZkXJDQDHolKzGPl-703lC8g2klIFd_VB/view?usp=sharing
+
+
+LOAIHANG(MaLoai,TenLoai)
+MATHANG(MaMH,TenMH,SIZE,LoaiHang,GiaMua,GiaBan,MoTa,SoLuong,NSX)
+KHACHHANG(MaKH,TenKH,Email,DiaChi,SoDienThoai,TaiKhoan,MatKhau)
+DONHANG(MaDH,KhachHang,DiaChiGiaoHang,SoDTGiaoHang,LoaiHinhThanhToan,DanhSachMatHang,
+SoLuongMoiMatHang,NgayDatHang,TinhTrang)
+HOADON(MaHD,DonHang,NgayXuat,PhiVanChuyen,TongTien)
+TINHTRANGDONHANG(MaTTDH,MoTa)
+LOAIHINHTHANHTOAN(MaLHTT,MoTa)
