@@ -1,8 +1,0 @@
-package connection;
-
-public class Test {
-	public static void main(String[] args) throws ClassNotFoundException {
-		System.out.println(JdbcConnection.getMySql());
-	}
-
-}
