@@ -6,6 +6,7 @@ import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 import controller.ItemGroupController;
 import controller.ItemGroupControllerImpl;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupView {
@@ -25,6 +26,9 @@ public class ItemGroupView {
 		System.out.println("=============");
 		ItemGroup group = controller.get(3);
 		System.out.println(group);
+		System.out.println("===========");
+		List<ItemGroupDetailDto> result = controller.getItemGroupDetails();
+		System.out.println(result);
 		
 	}
 }

@@ -11,6 +11,8 @@ import java.util.List;
 
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
+import dto.ItemGroupDetailDto;
+import dto.ItemGroupDetailRawData;
 import entities.ItemGroup;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
@@ -78,14 +80,13 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public ItemGroup get(int id) {
 		Connection conn = connection.getConnection();
-		
+
 		ItemGroup itemGroup = null;
-		String sql = "select * from loaihang"
-				+ " where maloai ="+id;
+		String sql = "select * from loaihang" + " where maloai =" + id;
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -99,6 +100,29 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 
 		}
 		return itemGroup;
+	}
+
+	@Override
+	public List<ItemGroupDetailRawData> getItemGroupDetails() {
+		Connection conn = connection.getConnection();
+		String sql = "SELECT 	lh.MaLoai, \n" + "		lh.TenLoai,\n" + "		sum(mh.SoLuong) soluonghang, \n"
+				+ "		group_concat(concat(mh.tenmh,\":\",mh.SoLuong) separator '-') chitietmh\n" + "FROM mathang mh\n"
+				+ "JOIN loaihang lh ON mh.MaLoai =lh.MaLoai\n" + "GROUP BY mh.MaLoai;";
+		List<ItemGroupDetailRawData> result = new ArrayList<>();
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while (rs.next()) {
+				result.add(new ItemGroupDetailRawData(rs.getInt("MaLoai"), rs.getString("TenLoai"),
+						rs.getInt("soluonghang"), rs.getString("chitietmh")));
+			}
+
+		} catch (SQLException e) {
+		} finally {
+			close(rs, st, conn);
+
+		}
+		return result;
 	}
 
 }

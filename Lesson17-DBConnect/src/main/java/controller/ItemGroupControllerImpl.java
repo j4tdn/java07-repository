@@ -1,8 +1,8 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 import service.ItemGroupService;
 import service.ItemGroupServiceImpl;
@@ -32,6 +32,11 @@ public class ItemGroupControllerImpl implements ItemGroupController {
 			throw new IllegalArgumentException("property cannot ");
 		}
 		return service.get(name);
+	}
+
+	@Override
+	public List<ItemGroupDetailDto> getItemGroupDetails() {
+		return service.getItemGroupDetails();
 	}
 
 }
