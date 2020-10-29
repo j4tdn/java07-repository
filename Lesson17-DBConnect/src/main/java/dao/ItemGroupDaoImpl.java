@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -9,6 +10,9 @@ import java.util.List;
 
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
+import dto.ItemGroupDetailDto;
+import dto.ItemGroupDetailRawData;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
@@ -22,16 +26,19 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 	}
 
 	@Override
-	public List<ItemGroup> getAll() {
-		List<ItemGroup> itemGroups = new ArrayList<>();
+	public List<ItemGroupDetailDto> getItemGroupDetails() {
+		List<ItemGroupDetailDto> result = new ArrayList<>();
 		Connection conn = connection.getConnection();
-		String query = "SELECT * FROM LoaiHang";
+		String query = "SELECT lh.MaLoai,lh.TenLoai,\n" + "SUM(mh.SoLuong) SoLuongHang,\n"
+				+ "group_concat(concat(mh.TenMH,\":\",mh.SoLuong) separator'-')\n" + "from MatHang mh\n"
+				+ "join LoaiHang lh ON mh.MaLoai=lh.MaLoai\n" + "group by lh.MaLoai;";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(query);
 			while (rs.next()) {
-				ItemGroup itemGroup = new ItemGroup(rs.getInt("MaLoai"), rs.getString("TenLoai"));
-				itemGroups.add(itemGroup);
+				ItemGroupDetailRawData itemGroupDetailRawData = new ItemGroupDetailRawData(rs.getInt("MaLoai"),
+						rs.getString("TenLoai"), rs.getInt("SoLuongHang"), rs.getString("ChiTietHang"));
+				result.add(itemGroupDetailRawData);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,18 +46,16 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 			close(rs, st, conn);
 
 		}
-		return itemGroups;
+		return result;
 	}
 
-	private <T extends AutoCloseable> void close(T... closedElements) {
-		Arrays.stream(closedElements).forEach(element -> {
-			if (element != null) {
-				try {
-					element.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+
+	@Override
+	public List<ItemGroup> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 }
