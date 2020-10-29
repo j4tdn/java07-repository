@@ -4,6 +4,7 @@ import java.util.List;
 
 import controller.ItemGroupController;
 import controller.ItemGroupControllerImpl;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupView {
@@ -25,5 +26,9 @@ public class ItemGroupView {
 		// 3. Get item group by name
 		List<ItemGroup> itemGroupsByName = itemGroupController.get("Mũ");
 		itemGroupsByName.forEach(System.out::println);
+
+		// 4. Using DTO
+		List<ItemGroupDetailDto> result = itemGroupController.getItemGroupDetail();
+		System.out.println(result);
 	}
 }
