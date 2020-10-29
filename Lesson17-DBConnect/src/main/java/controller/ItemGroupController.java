@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import dto.ItemGroupDetailDto;
 import entity.ItemGroup;
 
 public interface ItemGroupController {
@@ -10,4 +11,6 @@ public interface ItemGroupController {
 	List<ItemGroup> getName(String name);
 
 	ItemGroup getId(int id);
+	
+	List<ItemGroupDetailDto> getGroupDetailDtos();
 }

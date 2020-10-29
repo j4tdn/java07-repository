@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import dto.ItemGroupDetailDto;
 import entity.ItemGroup;
 import service.ItemGroupService;
 import service.ItemGroupServiceImpl;
@@ -31,5 +32,10 @@ public class ItemGroupControllerImpl implements ItemGroupController {
 	@Override
 	public ItemGroup getId(int id) {
 		return itemGroupService.getId(id);
+	}
+
+	@Override
+	public List<ItemGroupDetailDto> getGroupDetailDtos() {
+		return itemGroupService.getGroupDetailDtos();
 	}
 }

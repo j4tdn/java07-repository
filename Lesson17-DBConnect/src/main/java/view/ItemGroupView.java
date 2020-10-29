@@ -4,6 +4,7 @@ import java.util.List;
 
 import controller.ItemGroupController;
 import controller.ItemGroupControllerImpl;
+import dto.ItemGroupDetailDto;
 import entity.ItemGroup;
 
 public class ItemGroupView {
@@ -22,5 +23,8 @@ public class ItemGroupView {
 		System.out.println("================");
 		ItemGroup itemGroupsById = controller.getId(1);
 		System.out.println(itemGroupsById);
+		System.out.println("================");
+		List<ItemGroupDetailDto> itemGroupDetail = controller.getGroupDetailDtos();
+		itemGroupDetail.forEach(System.out::println);
 	}
 }

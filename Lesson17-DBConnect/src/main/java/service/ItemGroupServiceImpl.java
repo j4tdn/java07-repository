@@ -3,9 +3,12 @@ package service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import dao.ItemGroupDao;
 import dao.ItemGroupDaoImpl;
+import dto.ItemGroupDetailDto;
+import dto.ItemGroupDetailRawDto;
 import entity.ItemGroup;
 
 public class ItemGroupServiceImpl implements ItemGroupService {
@@ -31,6 +34,16 @@ public class ItemGroupServiceImpl implements ItemGroupService {
 	@Override
 	public ItemGroup getId(int id) {
 		return itemGroupDao.getId(id);
+	}
+
+	@Override
+	public List<ItemGroupDetailDto> getGroupDetailDtos() {
+		List<ItemGroupDetailRawDto> rawData = itemGroupDao.getItemGroupDetailRawDto();
+		if (rawData.isEmpty()) {
+			return Collections.emptyList();
+		}
+
+		return rawData.stream().map(ItemGroupDetailDto::new).collect(Collectors.toList());
 	}
 
 }

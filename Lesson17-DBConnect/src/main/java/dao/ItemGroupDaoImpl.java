@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
+import dto.ItemGroupDetailRawDto;
 import entity.ItemGroup;
+import utils.SqlUtils;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
 	private final ConnectionManager connection;
@@ -37,7 +38,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			SqlUtils.close(rs, st, con);
 		}
 		return itemGoups;
 	}
@@ -58,7 +59,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			SqlUtils.close(rs, st, con);
 		}
 		return itemGoups;
 	}
@@ -78,20 +79,29 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			SqlUtils.close(rs, st, con);
 		}
 		return itemGoup;
 	}
 
-	private <T extends AutoCloseable> void close(@SuppressWarnings("unchecked") T... closedElements) {
-		Arrays.stream(closedElements).forEach(e -> {
-			if (e != null) {
-				try {
-					e.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+	@Override
+	public List<ItemGroupDetailRawDto> getItemGroupDetailRawDto() {
+		List<ItemGroupDetailRawDto> itemGoupDetailRawDtos = new ArrayList<>();
+		Connection con = connection.getConnection();
+		String query = "SELECT lh.MaLoai, lh.TenLoai, SUM(mh.SoLuong) SoLuongMH, group_concat(concat(mh.TenMH, ': ', mh.SoLuong) separator ', ') ChiTietMH FROM mathang mh JOIN loaihang lh ON mh.MaLoai = lh.MaLoai GROUP BY lh.MaLoai";
+		try {
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				ItemGroupDetailRawDto itemGoupDetailRawDto = new ItemGroupDetailRawDto(rs.getInt("MaLoai"),
+						rs.getString("TenLoai"), rs.getInt("SoLuongMH"), rs.getString("ChiTietMH"));
+				itemGoupDetailRawDtos.add(itemGoupDetailRawDto);
 			}
-		});
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			SqlUtils.close(rs, st, con);
+		}
+		return itemGoupDetailRawDtos;
 	}
 }
