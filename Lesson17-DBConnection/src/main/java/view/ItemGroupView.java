@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import controller.ItemGroupController;
 import controller.ItemGroupControllerImpl;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupView {
@@ -29,6 +30,10 @@ public class ItemGroupView {
 		// 3.get itemGroup by id
 		ItemGroup itemGroupById = itemGroupController.get(2);
 		System.out.println(itemGroupById);
+		System.out.println("===================================");
+		// 4.using DTO
+		List<ItemGroupDetailDto> result = itemGroupController.getItemGroupDetails();
+		System.out.println(result);
 		
 	}
 

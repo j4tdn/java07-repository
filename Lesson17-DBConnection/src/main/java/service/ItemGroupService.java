@@ -2,6 +2,8 @@ package service;
 
 import java.util.List;
 
+import dto.ItemGroupDetailDto;
+
 import entities.ItemGroup;
 
 public interface ItemGroupService {
@@ -10,5 +12,6 @@ public interface ItemGroupService {
 	
 	ItemGroup get(int id);
 	List<ItemGroup> get(String name);
+	List<ItemGroupDetailDto> getItemGroupDetails();
 
 }

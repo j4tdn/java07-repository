@@ -3,11 +3,14 @@ package service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.management.RuntimeErrorException;
 
 import dao.ItemGroupDao;
 import dao.ItemGroupDaoImpl;
+import dto.ItemGroupDetailRawData;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupServiceImpl implements ItemGroupService{
@@ -32,6 +35,16 @@ public class ItemGroupServiceImpl implements ItemGroupService{
 	public ItemGroup get(int id) {
 		
 		return itemGroupDao.get(id);
+	}
+	@Override
+	public List<ItemGroupDetailDto> getItemGroupDetails() {
+		List<ItemGroupDetailRawData> rawData = itemGroupDao.getItemGroupDetails();
+		if(rawData.isEmpty()) {
+			return Collections.emptyList();
+		}
+		return rawData.stream().map(raw -> new ItemGroupDetailDto(raw)).collect(Collectors.toList());
+				
+				
 	}
 	
 

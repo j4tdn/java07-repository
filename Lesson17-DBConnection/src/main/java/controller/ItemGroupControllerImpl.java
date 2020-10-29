@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 import service.ItemGroupService;
 import service.ItemGroupServiceImpl;
@@ -31,6 +32,12 @@ public class ItemGroupControllerImpl implements ItemGroupController{
 	public ItemGroup get(int id) {
 		// TODO Auto-generated method stub
 		return itemGroupService.get(id);
+	}
+
+	@Override
+	public List<ItemGroupDetailDto> getItemGroupDetails() {
+		return itemGroupService.getItemGroupDetails();
+		
 	}
 
 }
