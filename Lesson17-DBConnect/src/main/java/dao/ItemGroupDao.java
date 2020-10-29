@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import DTO.ItemGroupDetailDTO;
+import DTO.ItemGroupDetailRawData;
 import entity.ItemGroup;
 
 public interface ItemGroupDao {
@@ -10,4 +12,6 @@ public interface ItemGroupDao {
 	List<ItemGroup> getName(String name);
 
 	ItemGroup getId(int id);
+	
+	List<ItemGroupDetailRawData> getItemGroupDetails();
 }

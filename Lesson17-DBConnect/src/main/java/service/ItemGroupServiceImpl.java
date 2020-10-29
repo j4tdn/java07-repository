@@ -3,7 +3,10 @@ package service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import DTO.ItemGroupDetailDTO;
+import DTO.ItemGroupDetailRawData;
 import dao.ItemGroupDao;
 import dao.ItemGroupDaoImpl;
 import entity.ItemGroup;
@@ -32,5 +35,13 @@ public class ItemGroupServiceImpl implements ItemGroupService {
 	public ItemGroup getId(int id) {
 		return itemGroupDao.getId(id);
 	}
+
+	@Override
+	public List<ItemGroupDetailDTO> getItemGroupDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

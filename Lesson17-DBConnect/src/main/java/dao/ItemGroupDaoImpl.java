@@ -6,11 +6,16 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
+import DTO.ItemGroupDetailDTO;
+import DTO.ItemGroupDetailRawData;
+import DTO.ItemGroupDetailRawData;
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
 import entity.ItemGroup;
+import utils.sqlUtils;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
 	private final ConnectionManager connection;
@@ -26,18 +31,18 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 	public List<ItemGroup> getAll() {
 		List<ItemGroup> itemGoups = new ArrayList<>();
 		Connection con = connection.getConnection();
-		String query = "SELECT * FROM donhang";
+		String query = "SELECT * FROM loaihang";
 		try {
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 			while (rs.next()) {
-				ItemGroup itemGoup = new ItemGroup(rs.getInt("MaDH"), rs.getString("DiaChiGiaoHang"));
+				ItemGroup itemGoup = new ItemGroup(rs.getInt("MaLoai"), rs.getString("TenLoai"));
 				itemGoups.add(itemGoup);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			sqlUtils.close(rs, st, con);
 		}
 		return itemGoups;
 	}
@@ -58,7 +63,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			sqlUtils.close(rs, st, con);
 		}
 		return itemGoups;
 	}
@@ -78,20 +83,37 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, con);
+			sqlUtils.close(rs, st, con);
 		}
 		return itemGoup;
 	}
-
-	private <T extends AutoCloseable> void close(@SuppressWarnings("unchecked") T... closedElements) {
-		Arrays.stream(closedElements).forEach(e -> {
-			if (e != null) {
-				try {
-					e.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+	
+	@Override
+	public List<ItemGroupDetailRawData> getItemGroupDetails() {
+		List<ItemGroupDetailRawData> result = new ArrayList<>();
+		Connection con = connection.getConnection();
+		String query = "SELECT  lh.Maloai, lh.TenLoai, SUM(mh.SoLuong) as SoLuongHang,  group_concat(concat(mh.TenMH,\";\", mh.SoLuong) separator'-') as ChiTietMatHang\n"
+					+ "FROM mathang mh\n"
+					+ "JOIN loaihang lh on mh.MaLoai = lh.MaLoai\n"
+					+ "GROUP By lh.MaLoai\n"
+					+ "";
+		try {	
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				ItemGroupDetailDTO dto = new ItemGroupDetailDTO();
+				dto.setId(rs.getInt("MaLoai"));
+				dto.setName(rs.getString("TenLoai"));
+				dto.setAmountOfItems(rs.getInt("SoLuongHang"));
+				dto.setDetail(rs.getString("ChiTietMatHang"));
+				result.addAll((Collection<? extends ItemGroupDetailRawData>) dto);
 			}
-		});
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlUtils.close(rs, st, con);
+		}
+		return result;
+		
 	}
 }
