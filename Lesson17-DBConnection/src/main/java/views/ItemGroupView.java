@@ -7,6 +7,7 @@ import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
 import controller.ItemGroupController;
 import controller.ItemGroupControllerImpl;
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 
 public class ItemGroupView {
@@ -24,5 +25,8 @@ public class ItemGroupView {
 		//itemGroups.forEach(System.out::println);
 		itemGroupsByName.forEach(System.out::println);
 		//System.out.println(itemGroup);
+		//4. Using DTO
+		List<ItemGroupDetailDto> result = itemGroupController.getItemGroupDetail();
+		System.out.println(result);
 	}
 }

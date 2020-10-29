@@ -3,6 +3,7 @@ package controller;
 import java.sql.Statement;
 import java.util.List;
 
+import dto.ItemGroupDetailDto;
 import entities.ItemGroup;
 import service.ItemGroupService;
 import service.ItemGroupServiceImpl;
@@ -31,6 +32,12 @@ public class ItemGroupControllerImpl implements ItemGroupController{
 			throw new IllegalArgumentException("Property cannot be null");
 		}
 		return itemGroupService.getByName(name);
+	}
+
+	@Override
+	public List<ItemGroupDetailDto> getItemGroupDetail() {
+		List<ItemGroupDetailDto> itemGroupDetail = itemGroupService.getItemGroupDetail();
+		return itemGroupDetail;
 	}
 
 }

@@ -11,7 +11,9 @@ import java.util.List;
 
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
+import dto.ItemGroupDetailRawData;
 import entities.ItemGroup;
+import utils.SqlUtils;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
 	private final ConnectionManager connection;
@@ -38,22 +40,9 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(resultSet, statement, conn);
+			SqlUtils.close(resultSet, statement, conn);
 		}
 		return itemGroups;
-	}
-
-	private <T extends AutoCloseable> void close(T ... closeElement) {
-		Arrays.stream(closeElement).forEach(element -> {
-			if (element != null) {
-				try {
-					element.close();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 
 	@Override
@@ -72,7 +61,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(resultSet, statement, conn);
+			SqlUtils.close(resultSet, statement, conn);
 		}
 		return itemGroup;
 	}
@@ -96,9 +85,36 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(resultSet, statement, conn);
+			SqlUtils.close(resultSet, statement, conn);
 		}
 		return itemGroups;
+	}
+
+	@Override
+	public List<ItemGroupDetailRawData> getItemGroupDetail() {
+		List<ItemGroupDetailRawData> results = new ArrayList<>();
+		Connection conn = connection.getConnection();
+		String query = "SELECT lh.MaLoai, lh.TenLoai, SUM(mh.SoLuong) SoLuongHang, GROUP_CONCAT(concat(mh.TenMH, \":\", mh.SoLuong) separator '-') ChiTietMatHang\r\n"  
+				+ "FROM mathang mh\r\n" 
+				+ "JOIN loaihang lh on mh.MaLoai = lh.MaLoai\r\n" 
+				+ "GROUP BY lh.MaLoai;";
+		try {
+			statement = conn.createStatement();
+			resultSet = statement.executeQuery(query);
+			while (resultSet.next()) {
+				ItemGroupDetailRawData itemGroupDetail = new ItemGroupDetailRawData(
+						resultSet.getInt("MaLoai"),
+						resultSet.getString("TenLoai"),
+						resultSet.getInt("SoLuongHang"),
+						resultSet.getString("ChiTietMatHang"));
+				results.add(itemGroupDetail);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlUtils.close(resultSet, statement, conn);
+		}
+		return results;
 	}
 
 }
