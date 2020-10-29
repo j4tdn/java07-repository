@@ -1,6 +1,8 @@
 package connection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionManagerImpl implements ConnectionManager {
@@ -11,22 +13,18 @@ public class ConnectionManagerImpl implements ConnectionManager {
 		provider = new ConfigurationProviderImpl();
 	}
 
+	@Override
 	public Connection getConnection() {
+		Properties props = provider.getProperties();
 
-		Properties props = new Properties();
 		Connection connection = null;
 		try {
-			try {
-				Class.forName(props.getProperty("driverClassName"));
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
+			Class.forName(props.getProperty("driverClassName"));
 			connection = DriverManager.getConnection(props.getProperty("URL"), props.getProperty("USER"),
 					props.getProperty("PASSWORD"));
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		} 
+		}
 		return connection;
 	}
-
 }

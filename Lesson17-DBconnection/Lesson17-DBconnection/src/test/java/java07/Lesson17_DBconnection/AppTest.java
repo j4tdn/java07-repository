@@ -1,4 +1,4 @@
-package java07.Lesson17_DBconnection;
+package java07.Lesson17_DBConnection;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

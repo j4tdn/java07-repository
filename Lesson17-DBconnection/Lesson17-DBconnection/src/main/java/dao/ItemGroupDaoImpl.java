@@ -1,19 +1,22 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ItemGroupDetailRawData.ItemGroupDetailDto;
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
 import entities.ItemGroup;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
-
 	private final ConnectionManager connection;
+	private PreparedStatement pst;
 	private Statement st;
 	private ResultSet rs;
 
@@ -23,79 +26,70 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 
 	@Override
 	public List<ItemGroup> getAll() {
-		List<ItemGroup> itemGroups = new ArrayList<ItemGroup>();
+		List<ItemGroup> itemGroups = new ArrayList<>();
 		Connection conn = connection.getConnection();
-		String query = "SELECT * FROM LoaiHang";
-
+		String query = "select * from loaihang";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(query);
 			while (rs.next()) {
-				ItemGroup itemGroup = new ItemGroup(rs.getInt("MatHang"));
+				ItemGroup itemGroup = new ItemGroup(rs.getInt("MaLoai"), rs.getString("TenLoai"));
 				itemGroups.add(itemGroup);
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs, st, conn);
 		}
-
 		return itemGroups;
 	}
 
 	@Override
 	public List<ItemGroup> get(String name) {
-		List<ItemGroup> itemGroups = new ArrayList<ItemGroup>();
+		List<ItemGroup> itemGroups = new ArrayList<>();
 		Connection conn = connection.getConnection();
-		String query = "SELECT *" 
-					+ "FROM LoaiHang"
-					+ "WHERE TenLoai = '" + name + "'";
-
+		String query = "select *\n" + "from loaihang\n" + "where TenLoai like ?";
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(query);
+			pst = conn.prepareStatement(query);
+			pst.setString(1, "%" + name + "%");
+			rs = pst.executeQuery();
 			while (rs.next()) {
-				ItemGroup itemGroup = new ItemGroup(rs.getInt("MatHang"));
+				ItemGroup itemGroup = new ItemGroup(rs.getInt("MaLoai"), rs.getString("TenLoai"));
 				itemGroups.add(itemGroup);
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs, st, conn);
 		}
-
 		return itemGroups;
 	}
-	
+
 	@Override
 	public ItemGroup get(int id) {
-		ItemGroup itemGroups = null;
+		ItemGroup itemGroup = null;
+		;
 		Connection conn = connection.getConnection();
-		String query = "SELECT *"
-				+ "FROM LoaiHang"
-				+ "WHERE Maloai = " + id;
-		
+		String query = "select *\n" + "from loaihang\n" + "where MaLoai = " + id;
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(query);
-			while(rs.next()) {
-				itemGroup = new ItemGroup(rs.getInt("Maloai"), rs.getInt("Tenloai"));
-				itemGroups.add(itemGroup);
+			if (rs.next()) {
+				itemGroup = new ItemGroup(rs.getInt("MaLoai"), rs.getString("TenLoai"));
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(rs, st, conn);
 		}
-		
-		return itemGroups;
+		return itemGroup;
 	}
 
 	private <T extends AutoCloseable> void close(T... closedElements) {
-		Arrays.stream(closedElements).forEach(elements -> {
-			if (elements != null) {
+		Arrays.stream(closedElements).forEach(element -> {
+			if (element != null) {
 				try {
-					elements.close();
+					element.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -103,4 +97,33 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		});
 	}
 
+	@Override
+	public List<ItemGroupDetailDto> getItemGroupDetails() {
+		List<ItemGroupDetailDto> itemGroupDetails = new ArrayList<>();
+		Connection conn = connection.getConnection();
+		String query = "SELECT lh.MaLoai, "
+				+ "lh.TenLoai, "
+				+ "SUM(mh.SoLuong) SoLuongHang, "
+				+ "group_concat(concat(mh.TenMH, ':', mh.SoLuong), separator '--') ChiTietMatHang \n" 
+				+ "FROM mathang mh \n" 
+				+ "JOIN LoaiHang lh ON mh.MaLoai = lh.MaLoai\n" 
+				+ "GROUP BY lh.MaLoai";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				ItemGroupDetailDto dto = new ItemGroupDetailDto();
+				dto.setId(rs.getInt("MaLoai"));
+				dto.setName(rs.getString("TenLoai"));
+				dto.setAmountOfItems(rs.getInt("SoLuongHang"));
+				dto.setItemList(rs.getString("ChiTietMatHang"));
+				itemGroupDetails.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs, st, conn);
+		}
+		return itemGroupDetails;
+	}
 }
