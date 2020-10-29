@@ -11,7 +11,9 @@ import java.util.List;
 
 import connection.ConnectionManager;
 import connection.ConnectionManagerImpl;
+import dto.ItemGroupDetailRawData;
 import entities.ItemGroup;
+import util.SqlUtils;
 
 public class ItemGroupDaoImpl implements ItemGroupDao {
 	private final ConnectionManager connection;
@@ -38,7 +40,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, conn);
+			SqlUtils.close(rs, st, conn);
 		}
 		return itemGroups;
 	}
@@ -59,7 +61,7 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, conn);
+			SqlUtils.close(rs, st, conn);
 		}
 		return itemGroups;
 	}
@@ -67,7 +69,6 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 	@Override
 	public ItemGroup get(int id) {
 		ItemGroup itemGroup = null;
-		;
 		Connection conn = connection.getConnection();
 		String query = "select *\n" + "from loaihang\n" + "where MaLoai = " + id;
 		try {
@@ -79,20 +80,39 @@ public class ItemGroupDaoImpl implements ItemGroupDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, st, conn);
+			SqlUtils.close(rs, st, conn);
 		}
 		return itemGroup;
 	}
 
-	private <T extends AutoCloseable> void close(T... closedElements) {
-		Arrays.stream(closedElements).forEach(element -> {
-			if (element != null) {
-				try {
-					element.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+	
+
+	@Override
+	public List<ItemGroupDetailRawData> getItemGroupDetails() {
+
+		List<ItemGroupDetailRawData> result  = new ArrayList<>();
+		Connection conn = connection.getConnection();
+		String query = "select lh.Maloai,lh.tenloai,Sum(mh.soluong) Soluonghang,group_concat(concat(mh.tenmh,\":\",mh.soluong) separator '-') ChiTietMatHang\n" 
+				+"FROM MATHANG MH\r\n" 
+				+"join loaihang lh on mh.maloai=lh.maloai\n" 
+				+"group by lh.maloai;";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(query);
+			while (rs.next()) {
+				ItemGroupDetailRawData dto=new ItemGroupDetailRawData();
+				dto.setId(rs.getInt("Maloai"));
+				dto.setName(rs.getString("TenLoai"));
+				dto.setAmountOfItem(rs.getInt("SoLuongHang"));
+				dto.setDetail(rs.getString("ChiTietMatHang"));
+				result.add(dto);
 			}
-		});
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			SqlUtils.close(rs, st, conn);
+		}
+		return result;
+		
 	}
 }
